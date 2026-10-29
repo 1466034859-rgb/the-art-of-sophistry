@@ -1,0 +1,799 @@
+[
+  {
+    "id": "pantry_overtime",
+    "scene_id": "office_pantry",
+    "title": "加班奉献是不是员工本分",
+    "subtitle": "公司茶水间 · 职场毒舌",
+    "scene_card": {
+      "time": "周四 18:47（下班前 13 分钟）",
+      "place": "17 层茶水间",
+      "present": "老周（直属上级）、小夏（你带的实习生）、阿May（隔壁组老员工）、小陈（老周嫡系）",
+      "reason": "下周一的值班表还没定，老周端着保温杯进来，杯口还浮着两颗枸杞",
+      "stake": "输了，下个月「自愿加班」名单上，还是你的名字"
+    },
+    "prologue": [
+      { "speaker": "小夏", "text": "哥，你那份需求文档……我改到第三版了。" },
+      { "speaker": "你", "text": "先放着，等我看完这个。" },
+      { "speaker": "阿May", "text": "又到周四了。每周四茶水间都特别热闹。" },
+      { "speaker": "小陈", "text": "周哥说了，今晚谁先走，谁就是不重视项目。" },
+      { "speaker": "小夏", "text": "我上周四加到十一点……第二天迟到十分钟，全勤还是扣了。", "evidence": "A" },
+      { "speaker": "老周", "text": "都在呢。正好，说个事。" },
+      { "speaker": "老周", "text": "下周一值班，还是老规矩，年轻人多担待。" },
+      { "speaker": "你", "text": "周哥，我上周已经连着四天了。" },
+      { "speaker": "老周", "text": "年轻人不肯加班，就是不敬业。这话我今天放这儿。" }
+    ],
+    "trigger": {
+      "line": "全场安静。小夏低下头，阿May抬眼看你，小陈跟着点头。",
+      "question": "你要怎么做？",
+      "options": [
+        { "id": "endure", "text": "算了，忍下这口气", "branch": "endure" },
+        { "id": "speak", "text": "把杯子放下，开口", "branch": "debate" }
+      ]
+    },
+    "endure": {
+      "audience": { "support": -18, "neutral": -10, "oppose": 12 },
+      "lines": [
+        { "speaker": "你", "text": "（你把到嘴边的话咽了回去，低头搅了搅咖啡。）" },
+        { "speaker": "老周", "text": "这就对了。年轻人，态度最重要。" },
+        { "speaker": "小夏", "text": "（小声）……哥，那我先回去了。" },
+        { "speaker": "旁白", "text": "第二天，你被排进了下周的「自愿加班」名单。你什么都没说。" }
+      ],
+      "debrief_note": "你选择了沉默。沉默也是选择，只是代价由别人替你付。"
+    },
+    "topic": {
+      "proposition": "加班奉献，是不是员工的本分",
+      "your_side": "不是本分，是选择（可以谈条件、可以拒绝）",
+      "npc_side": "是本分（拿了平台的资源，就该用时间回报）",
+      "stake": "这一场输了，下个月的排班你没有拒绝权",
+      "audience_init": { "support": 55, "neutral": 50, "oppose": 40 },
+      "audience_labels": { "support": "小夏", "neutral": "阿May", "oppose": "小陈" }
+    },
+    "rounds": [
+      {
+        "id": "r1",
+        "claim": "态度与偷换",
+        "speaker": "老周",
+        "statements": [
+          { "text": "我不是针对你，我自己也是从天天加班过来的。", "structure": "背景陈述", "flaw": false },
+          { "text": "肯加班的人机会自然多，这是很公平的交换。", "structure": "观点", "flaw": false },
+          { "text": "所以你不肯加班，就是没把团队当回事。", "structure": "漏洞句", "flaw": true }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "偷换概念", "correct": true },
+            { "text": "以偏概全", "correct": false, "wrong_reply": "我说的是态度，你跟我扯统计？我带了十几年人，还不如你懂？", "audience": { "support": -4, "neutral": -2, "oppose": 3 }, "remedy_hint": "他把「不加班」和「不把团队当回事」画了等号。" },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "你看，急了不是？我讲道理，你讲情绪。", "audience": { "support": -2, "neutral": -3, "oppose": 4 }, "remedy_hint": "他把「不加班」和「不把团队当回事」画了等号。" }
+          ]
+        },
+        "correct": {
+          "reply": "周哥，加班能换来机会，我认。但「机会」和「本分」是两件事——我可以选择抓住机会，也可以选择不把加班当义务。把「不加班」直接等于「不把团队当回事」，这一步跳得太快了。",
+          "audience": { "support": 8, "neutral": 3, "oppose": -2 },
+          "judge_note": "偷换概念",
+          "cards": ["定义权夺取", "精准拆解"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "把「本分」重新定义：本分是职责，不是时长", "correct": true, "audience": { "support": 6, "neutral": 4, "oppose": -2 }, "result": "老周被你噎了一下，说「行，你接着说」。" },
+            { "text": "强调自己其实很努力，只是那天有事", "correct": false, "audience": { "support": 1, "neutral": -2, "oppose": 2 }, "result": "老周摆摆手：「你看，还是态度问题。」" },
+            { "text": "反问周哥自己六点走不走", "correct": false, "audience": { "support": 3, "neutral": -3, "oppose": 4 }, "result": "话一出口就有点冲，阿May皱了皱眉。" }
+          ]
+        },
+        "remedy": { "hint": "他把「不加班」和「不把团队当回事」画了等号。", "remove": "诉诸情感" },
+        "fallback": { "reply": "你看，连自己错在哪都说不清。", "audience": { "support": -5, "neutral": -3, "oppose": 3 } },
+        "audience_note": [
+          { "speaker": "小夏", "text": "（眼睛亮了一下）" },
+          { "speaker": "阿May", "text": "「有点意思。」" }
+        ]
+      },
+      {
+        "id": "r2",
+        "claim": "恩情与合同",
+        "speaker": "老周",
+        "statements": [
+          { "text": "行，不谈态度，谈现实。", "structure": "转场", "flaw": false },
+          { "text": "公司给你平台、给你资源，你才有今天的成长。", "structure": "事实", "flaw": false },
+          { "text": "人得讲良心。平台养了你，你就该拿加班回报。", "structure": "漏洞句", "flaw": true }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "道德绑架（诉诸互惠）", "correct": true },
+            { "text": "诉诸权威", "correct": false, "wrong_reply": "我没搬谁出来。我说的是良心。", "audience": { "support": -3, "neutral": -2, "oppose": 2 }, "remedy_hint": "他把双向的合同，说成了单向的恩情。" },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我哪句推到极端了？你倒是说说。", "audience": { "support": -3, "neutral": -3, "oppose": 3 }, "remedy_hint": "他把双向的合同，说成了单向的恩情。" }
+          ]
+        },
+        "correct": {
+          "reply": "周哥，公司给平台，我们给产出，这是合同，不是恩情。要说良心——小夏上周加到十一点，第二天迟到十分钟，全勤照扣。这笔账，是按「家人」算，还是按「合同」算？",
+          "audience": { "support": 15, "neutral": 8, "oppose": -2 },
+          "judge_note": "道德绑架",
+          "cards": ["举证", "温和否定"],
+          "evidence": "A"
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "举证：小夏加班被扣全勤，合同不是恩情", "correct": true, "audience": { "support": 8, "neutral": 5, "oppose": -3 }, "result": "小夏猛地抬头，阿May轻轻「嚯」了一声。" },
+            { "text": "承认公司很好，只求互相理解", "correct": false, "audience": { "support": -2, "neutral": -4, "oppose": 3 }, "result": "老周乘胜追击：「理解就是互相的，你先理解公司。」" },
+            { "text": "说阿May也经常准点走", "correct": false, "audience": { "support": -1, "neutral": -5, "oppose": 4 }, "result": "阿May脸色一变：「别把我扯进来。」" }
+          ]
+        },
+        "remedy": { "hint": "他把双向的合同，说成了单向的恩情。", "remove": "滑坡" },
+        "fallback": { "reply": "你看，你连感恩都不懂。", "audience": { "support": -6, "neutral": -3, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "小夏", "text": "（用力点头）" },
+          { "speaker": "阿May", "text": "「这话我爱听。」" }
+        ]
+      },
+      {
+        "id": "r3",
+        "claim": "前途与滑坡",
+        "speaker": "老周",
+        "statements": [
+          { "text": "好，你讲合同。那我讲前途。", "structure": "转场", "flaw": false },
+          { "text": "你现在不肯多干一点，以后带项目、带团队，凭什么轮到你？", "structure": "漏洞句", "flaw": true },
+          { "text": "我不是吓你，这是我看了十几年的事。", "structure": "诉诸经验", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "滑坡", "correct": true },
+            { "text": "非黑即白", "correct": false, "wrong_reply": "我什么时候说只有两条路了？", "audience": { "support": -2, "neutral": -2, "oppose": 2 }, "remedy_hint": "从「不加班」到「没前途」，中间缺了至少三环。" },
+            { "text": "诉诸传统", "correct": false, "wrong_reply": "我讲的是前途，不是传统。", "audience": { "support": -3, "neutral": -2, "oppose": 3 }, "remedy_hint": "从「不加班」到「没前途」，中间缺了至少三环。" },
+            { "text": "轶事证据", "correct": false, "wrong_reply": "我说的是规律，不是个例。", "audience": { "support": -2, "neutral": -3, "oppose": 3 }, "remedy_hint": "从「不加班」到「没前途」，中间缺了至少三环。" }
+          ]
+        },
+        "correct": {
+          "reply": "周哥，这个推演缺了一环：不加班，怎么就等于带不了团队？我上周的排期，是按你六点走之前定的优先级做的——你走的时候，把剩下的活留给了我们。要说带团队，我更想学的，是怎么在八小时内把事排明白。",
+          "audience": { "support": 5, "neutral": 10, "oppose": -4 },
+          "judge_note": "滑坡",
+          "cards": ["逻辑闭环", "委婉反驳"],
+          "evidence": "B"
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "回扣排期：你六点走时把活留给了我们", "correct": true, "audience": { "support": 8, "neutral": 7, "oppose": -3 }, "result": "阿May笑出了声，小陈不说话了。" },
+            { "text": "指出周哥是在针对自己", "correct": false, "audience": { "support": -5, "neutral": -6, "oppose": 6 }, "result": "老周脸一沉：「你这是在说我？」" },
+            { "text": "退一步：以后我尽量多加班", "correct": false, "audience": { "support": -6, "neutral": -5, "oppose": 5 }, "result": "小夏失望地低下头。这一退，前两回合白打了。" }
+          ]
+        },
+        "remedy": { "hint": "从「不加班」到「没前途」，中间缺了至少三环。", "remove": "诉诸传统" },
+        "fallback": { "reply": "你看，你连这都听不进去，还谈什么前途。", "audience": { "support": -6, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "阿May", "text": "「今天这咖啡没白喝。」" },
+          { "speaker": "小陈", "text": "（不说话了）" }
+        ]
+      }
+    ],
+    "closing": {
+      "prompt": "结辩：最后说一句",
+      "options": [
+        { "id": "A", "text": "回扣开场：我不是不肯干，我只是不接受「不加班=不敬业」这个换算。", "audience": { "support": 6, "neutral": 4, "oppose": 0 }, "tag": "呼应" },
+        { "id": "B", "text": "拔高：如果一个团队只能靠加班证明忠诚，那是排期的问题，不是年轻人的问题。", "audience": { "support": 8, "neutral": 6, "oppose": -2 }, "tag": "立意" },
+        { "id": "C", "text": "温和：今晚的班我可以加，但这是选择，不是本分。", "audience": { "support": 2, "neutral": 8, "oppose": 6 }, "tag": "人情" }
+      ]
+    },
+    "judges": [
+      { "name": "逻辑型评委", "bias": "逻辑", "rule": { "min_correct_first": 2 } },
+      { "name": "共情型评委", "bias": "共情", "rule": { "min_rounds_won": 2 } },
+      { "name": "表达型评委", "bias": "表达", "rule": { "closing_in": ["A", "B"], "min_rounds_won": 1 } }
+    ],
+    "epilogue_win": [
+      { "speaker": "老周", "text": "……行。周一值班，我重新排。" },
+      { "speaker": "小夏", "text": "哥，你刚才那句「按合同算还是按家人算」……我能记下来吗？" },
+      { "speaker": "阿May", "text": "今天这杯咖啡，没白喝。" },
+      { "speaker": "旁白", "text": "你忽然想起老周桌上那张全家福。他也不是在为难你——他只是把「被需要」，当成了安全感的来源。" }
+    ],
+    "epilogue_lose": [
+      { "speaker": "老周", "text": "年轻人，多历练历练就懂了。" },
+      { "speaker": "小夏", "text": "（小声）哥，你别往心里去。" },
+      { "speaker": "旁白", "text": "那一晚你加了班。第二天，你把辞职信写了一半，又删了。" }
+    ],
+    "debrief": {
+      "note": "他先拿态度当事实，又拿恩情当合同，最后拿前途吓你。三次都是同一招，只是换了层皮。",
+      "fallacies": ["偷换概念", "道德绑架", "滑坡"],
+      "quiz": [
+        { "q": "「你不加班，就是不爱团队。」", "a": "偷换概念" },
+        { "q": "「我当年也这么过来的，所以你也该这样。」", "a": "诉诸传统 / 轶事证据" },
+        { "q": "「今天不加班，明天项目就得黄。」", "a": "滑坡" }
+      ]
+    }
+  },
+  {
+    "id": "comments_threshold",
+    "scene_id": "midnight_comments",
+    "title": "帮扶该不该设门槛",
+    "subtitle": "深夜评论区 · 网络对线",
+    "scene_card": {
+      "time": "凌晨 2:14",
+      "place": "你的手机屏幕（深夜评论区）",
+      "present": "阿岚（申请过帮扶的人）、数据搬运工（高赞反对评论）、夜猫子小李（路人）、理性党（搬运工的赞同者）",
+      "reason": "你发的帮扶帖被顶上了热门，搬运工在评论区 @ 了你",
+      "stake": "输了，帖子被「养懒人」刷屏，被挂上热搜边缘"
+    },
+    "prologue": [
+      { "speaker": "旁白", "text": "凌晨 2:14，你那条帖子被顶上了热门。屏幕的光照在天花板上。" },
+      { "speaker": "吃瓜第一线", "text": "前排。" },
+      { "speaker": "阿岚", "text": "我申请过那个补助。光贫困证明就跑了四趟，最后一次还因为格式不对被打回来。", "evidence": "A" },
+      { "speaker": "数据搬运工", "text": "楼上别急着卖惨。制度就是制度。" },
+      { "speaker": "数据搬运工", "text": "不设门槛，最后就是谁嗓门大谁拿钱。" },
+      { "speaker": "阿岚", "text": "可门槛本身，就已经把很多真正需要的人挡在外面了。" },
+      { "speaker": "数据搬运工", "text": "@博主，你说呢？" }
+    ],
+    "trigger": {
+      "line": "光标在回复框里闪。评论区在等你。",
+      "question": "你要怎么做？",
+      "options": [
+        { "id": "endure", "text": "装作没看见，关掉手机", "branch": "endure" },
+        { "id": "speak", "text": "回他", "branch": "debate" }
+      ]
+    },
+    "endure": {
+      "audience": { "support": -20, "neutral": -8, "oppose": 10 },
+      "lines": [
+        { "speaker": "旁白", "text": "你锁了屏，把手机扣在枕头边。" },
+        { "speaker": "数据搬运工", "text": "看，博主也不敢接。" },
+        { "speaker": "旁白", "text": "第二天，你的帖子被「养懒人」三个字刷屏。你删了又发，发了又删。" }
+      ],
+      "debrief_note": "沉默看起来最安全。但在评论区，沉默会被当成默认。"
+    },
+    "topic": {
+      "proposition": "弱势群体帮扶，该不该设置门槛",
+      "your_side": "不该：信任优先，审核后置、可追回",
+      "npc_side": "应该：资源有限，必须先筛",
+      "stake": "这一条回复，决定你这条帖子明天是置顶还是被举报",
+      "audience_init": { "support": 52, "neutral": 50, "oppose": 45 },
+      "audience_labels": { "support": "阿岚", "neutral": "夜猫子小李", "oppose": "理性党" }
+    },
+    "rounds": [
+      {
+        "id": "r1",
+        "claim": "风险不等于结局",
+        "speaker": "数据搬运工",
+        "statements": [
+          { "text": "我不是冷血，我每个月也捐。", "structure": "背景陈述", "flaw": false },
+          { "text": "但只要不设门槛，就一定会有人钻空子，最后整个帮扶体系都会被拖垮。", "structure": "漏洞句", "flaw": true },
+          { "text": "所以门槛不是冷漠，是让善意能持续下去。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "滑坡", "correct": true },
+            { "text": "以偏概全", "correct": false, "wrong_reply": "你说个别现象？我说的是制度成本，别偷换。", "audience": { "support": -4, "neutral": -3, "oppose": 3 }, "remedy_hint": "他把「可能被滥用」直接说成了「一定崩溃」。" },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "你看，又来了。讲道理讲不过就谈感情。", "audience": { "support": -2, "neutral": -3, "oppose": 4 }, "remedy_hint": "他把「可能被滥用」直接说成了「一定崩溃」。" }
+          ]
+        },
+        "correct": {
+          "reply": "「一定会有人钻空子」我信。但钻空子到「体系拖垮」，中间你跳过了追回、公示、抽查——风险被你说成了结局。",
+          "audience": { "support": 12, "neutral": 6, "oppose": -2 },
+          "judge_note": "滑坡",
+          "cards": ["精准拆解", "逻辑封锁"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "把「可能被滥用」和「必然崩溃」拆开", "correct": true, "audience": { "support": 7, "neutral": 4, "oppose": -2 }, "result": "搬运工顿了一下：「……你这话倒挑不出毛病。」" },
+            { "text": "强调捐赠者也不容易", "correct": false, "audience": { "support": 1, "neutral": -3, "oppose": 3 }, "result": "评论区刷过一排「道德绑架」。" },
+            { "text": "直接说对方冷血", "correct": false, "audience": { "support": -5, "neutral": -5, "oppose": 6 }, "result": "搬运工冷笑：「开始了。」" }
+          ]
+        },
+        "remedy": { "hint": "他把「可能」说成了「一定」。", "remove": "诉诸情感" },
+        "fallback": { "reply": "你看，连风险有多大都没想清楚。", "audience": { "support": -5, "neutral": -3, "oppose": 3 } },
+        "audience_note": [
+          { "speaker": "阿岚", "text": "（默默点了个赞）" },
+          { "speaker": "夜猫子小李", "text": "「这话有点意思。」" }
+        ]
+      },
+      {
+        "id": "r2",
+        "claim": "两个选项不是全部",
+        "speaker": "数据搬运工",
+        "statements": [
+          { "text": "审核确实麻烦一点，但至少能筛掉明显不符合的。", "structure": "事实", "flaw": false },
+          { "text": "如果不设门槛，那对真正困难的人就公平吗？", "structure": "漏洞句", "flaw": true },
+          { "text": "公平不能只靠同情心。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "非黑即白（虚假两难）", "correct": true },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我哪句往极端推了？我说的是公平。", "audience": { "support": -3, "neutral": -2, "oppose": 2 }, "remedy_hint": "他给的选择题只有两个选项：设门槛，或者完全不审核。" },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "你又开始谈感受了。", "audience": { "support": -2, "neutral": -3, "oppose": 3 }, "remedy_hint": "他给的选择题只有两个选项：设门槛，或者完全不审核。" }
+          ]
+        },
+        "correct": {
+          "reply": "你给了两个选项：要么设门槛，要么完全不审核。可阿岚跑了四趟，最后因为「格式不对」被打回来——问题不在门槛，在门槛的样式。你把一道选择题，做成了判断题。",
+          "audience": { "support": 15, "neutral": 8, "oppose": -3 },
+          "judge_note": "非黑即白",
+          "cards": ["举证", "定义权夺取"],
+          "evidence": "A"
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "用阿岚跑四趟，举出第三种做法", "correct": true, "audience": { "support": 8, "neutral": 5, "oppose": -3 }, "result": "阿岚回了一条：「四趟。真的四趟。」" },
+            { "text": "承认审核确实有必要", "correct": false, "audience": { "support": -2, "neutral": -3, "oppose": 3 }, "result": "搬运工顺势接话：「那你就是同意设门槛了。」" },
+            { "text": "把话题转去骂平台", "correct": false, "audience": { "support": -1, "neutral": -6, "oppose": 4 }, "result": "评论区开始吵架，没人再讨论帮扶本身。" }
+          ]
+        },
+        "remedy": { "hint": "他把「不设门槛」等同于「完全不审核」。", "remove": "诉诸情感" },
+        "fallback": { "reply": "你看，你连公平都不敢正面回答。", "audience": { "support": -6, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "夜猫子小李", "text": "「原来还能这么搞。」" },
+          { "speaker": "阿岚", "text": "「轻量核实……可行吗？」" }
+        ]
+      },
+      {
+        "id": "r3",
+        "claim": "一个个案不是制度",
+        "speaker": "数据搬运工",
+        "statements": [
+          { "text": "我见过不止一个例子。", "structure": "铺垫", "flaw": false },
+          { "text": "领了补助转头就换新手机的人，你又不是没见过。", "structure": "漏洞句", "flaw": true },
+          { "text": "这种事多了，谁还愿意捐？", "structure": "后果推演", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "轶事证据（以个例推整体）", "correct": true },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我说的是现象，不是推演。", "audience": { "support": -2, "neutral": -3, "oppose": 3 }, "remedy_hint": "他用一个换手机的个案，否定了整套规则。" },
+            { "text": "人身攻击", "correct": false, "wrong_reply": "我攻击谁了？我说的是现象。", "audience": { "support": -3, "neutral": -2, "oppose": 2 }, "remedy_hint": "他用一个换手机的个案，否定了整套规则。" },
+            { "text": "诉诸传统", "correct": false, "wrong_reply": "我没说传统，我说的是现实。", "audience": { "support": -2, "neutral": -2, "oppose": 2 }, "remedy_hint": "他用一个换手机的个案，否定了整套规则。" }
+          ]
+        },
+        "correct": {
+          "reply": "你见过一个换手机的，我信。但你上周转的那条「帮扶被滥用」截图，后来被证实是三年前的旧闻——你自己也删了。用一个个案否定一整套规则？它证明不了制度，只证明你见过一个换手机的人。",
+          "audience": { "support": 5, "neutral": 10, "oppose": -4 },
+          "judge_note": "轶事证据（以偏概全）",
+          "cards": ["事实击穿", "逻辑镜像"],
+          "evidence": "B"
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "举证：那条截图是三年前的旧闻", "correct": true, "audience": { "support": 8, "neutral": 7, "oppose": -3 }, "result": "搬运工没再回。几分钟后，他把那条评论删了。" },
+            { "text": "承认个案确实存在", "correct": false, "audience": { "support": -2, "neutral": -4, "oppose": 3 }, "result": "搬运工接住话头：「所以你也承认有问题。」" },
+            { "text": "骂对方造谣", "correct": false, "audience": { "support": -5, "neutral": -6, "oppose": 6 }, "result": "理性党集体出动，评论区彻底歪楼。" }
+          ]
+        },
+        "remedy": { "hint": "他用一个换手机的个案，推翻了整套规则。", "remove": "诉诸传统" },
+        "fallback": { "reply": "你看，你连证据都不看。", "audience": { "support": -5, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "阿岚", "text": "「他把评论删了。」" },
+          { "speaker": "夜猫子小李", "text": "「这波反转我没想到。」" }
+        ]
+      }
+    ],
+    "closing": {
+      "prompt": "结辩：最后回一条",
+      "options": [
+        { "id": "A", "text": "回扣开场：我一开始就说，我不是反对门槛，我反对把门槛当成默认答案。", "audience": { "support": 6, "neutral": 4, "oppose": 0 }, "tag": "呼应" },
+        { "id": "B", "text": "拔高：一个社会的善意，不该用跑四趟证明来换。", "audience": { "support": 8, "neutral": 6, "oppose": -2 }, "tag": "立意" },
+        { "id": "C", "text": "温和：老陈，我知道你怕被骗。我也怕。但我们能不能先试「轻门槛」，而不是先假设所有人都在骗？", "audience": { "support": 2, "neutral": 8, "oppose": 6 }, "tag": "人情" }
+      ]
+    },
+    "judges": [
+      { "name": "逻辑党评委", "bias": "逻辑", "rule": { "min_correct_first": 2 } },
+      { "name": "共情党评委", "bias": "共情", "rule": { "min_rounds_won": 2 } },
+      { "name": "吃瓜党评委", "bias": "表达", "rule": { "closing_in": ["A", "B"], "min_rounds_won": 1 } }
+    ],
+    "epilogue_win": [
+      { "speaker": "数据搬运工", "text": "（他把评论改成了「部分同意」。）" },
+      { "speaker": "阿岚", "text": "谢谢你。我明天再去跑一趟。" },
+      { "speaker": "夜猫子小李", "text": "这楼我追了一晚上，值。" },
+      { "speaker": "旁白", "text": "你后来才知道，搬运工的亲戚被一个假求助骗过两万块。他不是冷血，他只是被伤过。" }
+    ],
+    "epilogue_lose": [
+      { "speaker": "数据搬运工", "text": "博主，同情心救不了人。" },
+      { "speaker": "旁白", "text": "阿岚的头像暗了下去，没再说话。" },
+      { "speaker": "旁白", "text": "第二天，你的帖子被顶上了另一条热搜。标题里没有你的名字，但每个人都认得出。" }
+    ],
+    "debrief": {
+      "note": "他先说明天就完蛋，又说不设门槛就完蛋，最后举了个邻居换手机的例子。三次都没落到证据上。",
+      "fallacies": ["滑坡", "非黑即白", "轶事证据"],
+      "quiz": [
+        { "q": "「不设门槛，早晚全乱套。」", "a": "滑坡" },
+        { "q": "「要么严格审核，要么别谈公平。」", "a": "非黑即白" },
+        { "q": "「我邻居就是领了钱去买手机的。」", "a": "轶事证据" }
+      ]
+    }
+  },
+  {
+    "id": "dinner_education",
+    "scene_id": "new_year_dinner",
+    "title": "快乐优先还是成绩优先",
+    "subtitle": "家庭年夜饭 · 亲戚毒舌",
+    "scene_card": {
+      "time": "除夕 19:20",
+      "place": "二舅家餐厅",
+      "present": "二舅（成绩派）、二舅妈（中立偏成绩）、表妹小满（10 岁，偏你）、三叔（附和二舅）",
+      "reason": "春晚在电视里放着，小满趴在饭桌一角写卷子",
+      "stake": "输了，小满下学期的周末全被补习班占满，而你是帮凶"
+    },
+    "prologue": [
+      { "speaker": "旁白", "text": "春晚在电视里放着，没人看。鱼凉了，也没人动。" },
+      { "speaker": "小满", "text": "哥，我这道题写完能看会儿动画片吗？" },
+      { "speaker": "二舅", "text": "看什么动画片，先把这套卷子做完。" },
+      { "speaker": "二舅妈", "text": "大过年的，让孩子歇会儿吧。" },
+      { "speaker": "二舅", "text": "你懂什么，现在不逼她，将来谁逼她？" },
+      { "speaker": "三叔", "text": "二哥说得对，我家那个也这么管。" },
+      { "speaker": "二舅", "text": "你说是不是？现在这些快乐教育，都是害孩子。" }
+    ],
+    "trigger": {
+      "line": "一桌人的筷子都停了。小满低着头，铅笔尖在纸上戳出一个小洞。",
+      "question": "你要怎么做？",
+      "options": [
+        { "id": "endure", "text": "打圆场，把话岔开", "branch": "endure" },
+        { "id": "speak", "text": "放下筷子，接话", "branch": "debate" }
+      ]
+    },
+    "endure": {
+      "audience": { "support": -16, "neutral": -8, "oppose": 10 },
+      "lines": [
+        { "speaker": "你", "text": "大过年的，先吃饭，先吃饭。" },
+        { "speaker": "二舅", "text": "还是你懂事。" },
+        { "speaker": "旁白", "text": "小满没抬头，铅笔在卷子上划了一道很深的线。" },
+        { "speaker": "旁白", "text": "那天晚上，她的卷子写到了十一点。你在客厅听见她咳嗽。" }
+      ],
+      "debrief_note": "你替所有人把场面圆了过去。只有小满知道，那个场面里没有她。"
+    },
+    "topic": {
+      "proposition": "孩子教育，快乐优先还是成绩优先",
+      "your_side": "快乐优先：快乐不是放任，是保护她愿意学的那口气",
+      "npc_side": "成绩优先：现在不吃苦，将来更苦",
+      "stake": "输了，小满下学期的周末全被补习班占满",
+      "audience_init": { "support": 54, "neutral": 50, "oppose": 44 },
+      "audience_labels": { "support": "小满", "neutral": "二舅妈", "oppose": "三叔" }
+    },
+    "rounds": [
+      {
+        "id": "r1",
+        "claim": "快乐不是放任",
+        "speaker": "二舅",
+        "statements": [
+          { "text": "我不是不爱孩子，我当年也是被逼出来的。", "structure": "背景陈述", "flaw": false },
+          { "text": "快乐教育？那就是由着她玩，将来谁负责？", "structure": "漏洞句", "flaw": true },
+          { "text": "教育这件事，不能心软。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "非黑即白（稻草人）", "correct": true },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我哪句推极端了？我说的是现实。", "audience": { "support": -3, "neutral": -2, "oppose": 3 }, "remedy_hint": "他把「快乐优先」等同于「放任不管」。" },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "你看，说不过就讲感情。", "audience": { "support": -2, "neutral": -3, "oppose": 4 }, "remedy_hint": "他把「快乐优先」等同于「放任不管」。" }
+          ]
+        },
+        "correct": {
+          "reply": "二舅，你给了两个选项：要么快乐，要么放任。但快乐优先不是不管，是把「她愿不愿意学」放在「她排第几」前面。",
+          "audience": { "support": 8, "neutral": 4, "oppose": -2 },
+          "judge_note": "非黑即白（稻草人）",
+          "cards": ["定义权夺取", "精准拆解"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "把「快乐」重新定义：不是不学，是愿意学", "correct": true, "audience": { "support": 6, "neutral": 4, "oppose": -2 }, "result": "小满偷偷抬了下头。二舅没接上话。" },
+            { "text": "说小满其实很懂事", "correct": false, "audience": { "support": 1, "neutral": -3, "oppose": 3 }, "result": "二舅摆手：「懂事的孩子才更该抓紧。」" },
+            { "text": "说二舅的教育方式过时", "correct": false, "audience": { "support": -4, "neutral": -5, "oppose": 6 }, "result": "二舅把筷子一放：「我过时？我把你养这么大。」" }
+          ]
+        },
+        "remedy": { "hint": "他把「快乐优先」等同于「放任不管」。", "remove": "诉诸情感" },
+        "fallback": { "reply": "你看，连孩子要什么都没搞清楚。", "audience": { "support": -5, "neutral": -3, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "小满", "text": "（偷偷抬头）" },
+          { "speaker": "二舅妈", "text": "「……这话好像也对。」" }
+        ]
+      },
+      {
+        "id": "r2",
+        "claim": "别人家孩子都这样",
+        "speaker": "二舅",
+        "statements": [
+          { "text": "你看谁家孩子不是补习班排满。", "structure": "依据：别人家", "flaw": false },
+          { "text": "大家都是这么过来的，说明这条路是对的。", "structure": "漏洞句", "flaw": true },
+          { "text": "随大流，至少不会错。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "乐队花车（诉诸传统）", "correct": true },
+            { "text": "轶事证据", "correct": false, "wrong_reply": "我说的是普遍现象，不是个例。", "audience": { "support": -2, "neutral": -2, "oppose": 2 }, "remedy_hint": "「大家都这样」只能说明它常见，不能说明它对。" },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我哪句滑坡了？", "audience": { "support": -3, "neutral": -2, "oppose": 3 }, "remedy_hint": "「大家都这样」只能说明它常见，不能说明它对。" }
+          ]
+        },
+        "correct": {
+          "reply": "「大家都这样」只能说明它常见，不能说明它对。几十年前大家还都觉得孩子不用上学呢——普遍性不是正确性。",
+          "audience": { "support": 12, "neutral": 6, "oppose": -2 },
+          "judge_note": "乐队花车",
+          "cards": ["举证", "温和否定"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "举证：小满上周发烧还硬撑着上补习班", "correct": true, "audience": { "support": 8, "neutral": 5, "oppose": -3 }, "result": "二舅妈愣了一下：「……上周她确实发烧了。」" },
+            { "text": "承认补习班有用，只求少一点", "correct": false, "audience": { "support": -2, "neutral": -4, "oppose": 3 }, "result": "二舅立刻接上：「少一点也是少，不如不做。」" },
+            { "text": "拿二舅妈举例", "correct": false, "audience": { "support": -1, "neutral": -6, "oppose": 4 }, "result": "二舅妈脸一沉：「你扯我干什么。」" }
+          ]
+        },
+        "remedy": { "hint": "「大家都这样」证明不了「这样是对的」。", "remove": "滑坡" },
+        "fallback": { "reply": "你看，你连别人家孩子都没见过。", "audience": { "support": -5, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "二舅妈", "text": "「小满上周是发着烧去的。」" },
+          { "speaker": "小满", "text": "（眼睛红了）" }
+        ]
+      },
+      {
+        "id": "r3",
+        "claim": "现在快乐等于将来毁了",
+        "speaker": "二舅",
+        "statements": [
+          { "text": "孩子小，不懂事。", "structure": "铺垫", "flaw": false },
+          { "text": "你现在让她快乐，将来她考不上好学校、找不到好工作，一辈子就毁了。", "structure": "漏洞句", "flaw": true },
+          { "text": "我这都是为她好。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "滑坡", "correct": true },
+            { "text": "非黑即白", "correct": false, "wrong_reply": "我没说只有两条路。", "audience": { "support": -2, "neutral": -2, "oppose": 2 }, "remedy_hint": "从「现在快乐」到「一辈子毁了」，中间缺了十几年。" },
+            { "text": "轶事证据", "correct": false, "wrong_reply": "我说的是趋势，不是个例。", "audience": { "support": -3, "neutral": -2, "oppose": 3 }, "remedy_hint": "从「现在快乐」到「一辈子毁了」，中间缺了十几年。" },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "我本来就是为她好。", "audience": { "support": -2, "neutral": -3, "oppose": 3 }, "remedy_hint": "从「现在快乐」到「一辈子毁了」，中间缺了十几年。" }
+          ]
+        },
+        "correct": {
+          "reply": "「现在快乐」到「一辈子毁了」，中间隔着十几年的选择。你把一个可能性说成了必然，这不是预测，是吓唬。",
+          "audience": { "support": 5, "neutral": 10, "oppose": -4 },
+          "judge_note": "滑坡",
+          "cards": ["逻辑闭环", "委婉反驳"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "回扣小满：她要的不是不学，是被问一句累不累", "correct": true, "audience": { "support": 8, "neutral": 7, "oppose": -3 }, "result": "小满突然说：「我就是有点累。」全桌安静了。" },
+            { "text": "共情二舅当年也不容易", "correct": false, "audience": { "support": 2, "neutral": -1, "oppose": 2 }, "result": "二舅叹了口气，但话题没再往下走。" },
+            { "text": "说「那我以后不管了」", "correct": false, "audience": { "support": -6, "neutral": -5, "oppose": 5 }, "result": "二舅冷笑：「看吧，年轻人就是没长性。」" }
+          ]
+        },
+        "remedy": { "hint": "从「现在快乐」到「一辈子毁了」，中间缺了十几年。", "remove": "诉诸情感" },
+        "fallback": { "reply": "你看，你连她将来要面对什么都不知道。", "audience": { "support": -6, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "小满", "text": "「哥，我其实不是不想学。」" },
+          { "speaker": "二舅", "text": "（沉默，给小满夹了块鱼）" }
+        ]
+      }
+    ],
+    "closing": {
+      "prompt": "结辩：最后说一句",
+      "options": [
+        { "id": "A", "text": "回扣开场：我不是反对成绩，我反对把「快乐」和「放任」画等号。", "audience": { "support": 6, "neutral": 4, "oppose": 0 }, "tag": "呼应" },
+        { "id": "B", "text": "拔高：一个孩子如果只有被逼着才学，那才是真正的输在起跑线。", "audience": { "support": 8, "neutral": 6, "oppose": -2 }, "tag": "立意" },
+        { "id": "C", "text": "温和：二舅，成绩我们要，但能不能先问小满一句：你累不累？", "audience": { "support": 2, "neutral": 8, "oppose": 6 }, "tag": "人情" }
+      ]
+    },
+    "judges": [
+      { "name": "长辈评委", "bias": "经验", "rule": { "min_rounds_won": 2 } },
+      { "name": "孩子评委", "bias": "共情", "rule": { "closing_in": ["A", "C"], "min_rounds_won": 1 } },
+      { "name": "中立评委", "bias": "逻辑", "rule": { "min_correct_first": 2 } }
+    ],
+    "epilogue_win": [
+      { "speaker": "二舅", "text": "（沉默了一会儿，给小满夹了块鱼）「……先吃饭。」" },
+      { "speaker": "小满", "text": "（小声）谢谢哥。" },
+      { "speaker": "二舅妈", "text": "（笑）你二舅就是嘴硬。" },
+      { "speaker": "旁白", "text": "你后来才知道，二舅当年因为成绩，被爷爷用扫帚打过。他不是想逼小满，他是怕她走自己的老路。" }
+    ],
+    "epilogue_lose": [
+      { "speaker": "二舅", "text": "你看，孩子不能惯。" },
+      { "speaker": "小满", "text": "（她低头把卷子翻到最后一页。）" },
+      { "speaker": "旁白", "text": "那个寒假，小满的周末排满了课。她在作文里写：我最喜欢的季节是冬天，因为冬天不用上学。后来老师把这句话圈了出来。" }
+    ],
+    "debrief": {
+      "note": "二舅怕的不是小满不努力，是小满走他的老路。他嘴上说的是成绩，心里想的是自己。",
+      "fallacies": ["非黑即白", "乐队花车", "滑坡"],
+      "quiz": [
+        { "q": "「快乐教育就是由着孩子玩。」", "a": "非黑即白（稻草人）" },
+        { "q": "「大家都报补习班，所以必须报。」", "a": "乐队花车" },
+        { "q": "「现在让她快乐，将来她就毁了。」", "a": "滑坡" }
+      ]
+    }
+  },
+  {
+    "id": "cafe_science",
+    "scene_id": "academic_cafe",
+    "title": "科学要不要照顾大众情感",
+    "subtitle": "学术咖啡馆 · 理性对线",
+    "scene_card": {
+      "time": "周六 15:30",
+      "place": "学校旁咖啡馆二楼",
+      "present": "你（分享研究）、青年教师阿哲（不需要兼顾）、媒体人林姐（中立）、听众老陶（偏你）",
+      "reason": "你在做一场科普分享，刚讲到「结论可能与直觉相反」",
+      "stake": "输了，你的分享会被剪成十五秒的「傲慢科学家」短视频"
+    },
+    "prologue": [
+      { "speaker": "旁白", "text": "投影上是你的研究结论，台下坐着十几个人，磨豆机在吧台后头响。" },
+      { "speaker": "你", "text": "这个结果可能和大家直觉不太一样……" },
+      { "speaker": "阿哲", "text": "等等。你刚才那句，是在给结论加情绪缓冲吗？" },
+      { "speaker": "林姐", "text": "我觉得挺好啊，至少听众不会被吓跑。" },
+      { "speaker": "阿哲", "text": "科学不需要讨好谁。该是什么就是什么。" },
+      { "speaker": "老陶", "text": "（小声）可你上次那个说法，我回家一晚上没睡着。" },
+      { "speaker": "阿哲", "text": "你说，科学结论该不该照顾大众情感？" }
+    ],
+    "trigger": {
+      "line": "咖啡馆安静下来，磨豆机的声音显得特别响。",
+      "question": "你要怎么做？",
+      "options": [
+        { "id": "endure", "text": "岔开话题，先讲下一页", "branch": "endure" },
+        { "id": "speak", "text": "正面回应", "branch": "debate" }
+      ]
+    },
+    "endure": {
+      "audience": { "support": -18, "neutral": -8, "oppose": 10 },
+      "lines": [
+        { "speaker": "你", "text": "我们先看数据。" },
+        { "speaker": "阿哲", "text": "你看，你也在回避。" },
+        { "speaker": "旁白", "text": "那场分享草草收场。一周后，你的讲座被剪成十五秒短视频。" },
+        { "speaker": "旁白", "text": "标题是：「科学家拒绝回应公众担忧」。" }
+      ],
+      "debrief_note": "你把问题留在了空气里。沉默会被别人替你解释，而那解释通常不好听。"
+    },
+    "topic": {
+      "proposition": "科学结论，是否需要兼顾大众的情感接受度",
+      "your_side": "需要：结论不让步，表达要兼顾",
+      "npc_side": "不需要：科学只对事实负责",
+      "stake": "输了，你的分享会被剪成十五秒的「傲慢科学家」",
+      "audience_init": { "support": 55, "neutral": 50, "oppose": 44 },
+      "audience_labels": { "support": "老陶", "neutral": "林姐", "oppose": "研究者" }
+    },
+    "rounds": [
+      {
+        "id": "r1",
+        "claim": "兼顾情感不是让事实让路",
+        "speaker": "阿哲",
+        "statements": [
+          { "text": "科学的价值，就在于不讨好任何人。", "structure": "观点", "flaw": false },
+          { "text": "你要兼顾情感，那就是让事实给情绪让路。", "structure": "漏洞句", "flaw": true },
+          { "text": "这没什么可商量的。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "非黑即白（稻草人）", "correct": true },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "你看，你也在谈感受。", "audience": { "support": -3, "neutral": -2, "oppose": 2 }, "remedy_hint": "他把「表达方式」和「结论本身」混成一件事。" },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我哪句滑坡？", "audience": { "support": -2, "neutral": -3, "oppose": 3 }, "remedy_hint": "他把「表达方式」和「结论本身」混成一件事。" }
+          ]
+        },
+        "correct": {
+          "reply": "阿哲，「兼顾情感」和「让事实让路」是两件事。结论不改，改的是怎么说、什么时候说、说完给谁听——这不叫妥协，这叫传播。",
+          "audience": { "support": 8, "neutral": 4, "oppose": -2 },
+          "judge_note": "非黑即白（稻草人）",
+          "cards": ["定义权夺取", "精准拆解"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "区分「结论」与「表达」", "correct": true, "audience": { "support": 7, "neutral": 5, "oppose": -2 }, "result": "阿哲沉默了几秒：「……你说的是传播学，不是科学。」但他没再打断。" },
+            { "text": "承认科学不该讨好，但请求理解", "correct": false, "audience": { "support": -2, "neutral": -3, "oppose": 2 }, "result": "阿哲接话：「理解不是科学的一部分。」" },
+            { "text": "反问阿哲「你被网暴过吗」", "correct": false, "audience": { "support": -4, "neutral": -6, "oppose": 5 }, "result": "阿哲脸色变了。林姐皱起眉。" }
+          ]
+        },
+        "remedy": { "hint": "他把「表达方式」和「结论本身」混成一件事。", "remove": "滑坡" },
+        "fallback": { "reply": "你看，你连我在说什么都没听清。", "audience": { "support": -5, "neutral": -3, "oppose": 3 } },
+        "audience_note": [
+          { "speaker": "老陶", "text": "（点头）" },
+          { "speaker": "林姐", "text": "「这个说法我可以写进稿子。」" }
+        ]
+      },
+      {
+        "id": "r2",
+        "claim": "改措辞不等于改数据",
+        "speaker": "阿哲",
+        "statements": [
+          { "text": "科普当然要考虑表达。", "structure": "让步", "flaw": false },
+          { "text": "但今天你为情感改一个措辞，明天就会为情感改一个数据，最后科学就没了。", "structure": "漏洞句", "flaw": true },
+          { "text": "底线不能退。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "滑坡", "correct": true },
+            { "text": "非黑即白", "correct": false, "wrong_reply": "我没说只有两条路。", "audience": { "support": -2, "neutral": -2, "oppose": 2 }, "remedy_hint": "从「改措辞」到「改数据」，中间隔着整个科学流程。" },
+            { "text": "诉诸权威", "correct": false, "wrong_reply": "我没搬权威。", "audience": { "support": -3, "neutral": -2, "oppose": 3 }, "remedy_hint": "从「改措辞」到「改数据」，中间隔着整个科学流程。" }
+          ]
+        },
+        "correct": {
+          "reply": "「改一个措辞」直接跳到「改一个数据」，中间隔着同行评议、预注册、数据公开。你把流程里的每一道锁都当成了不存在。",
+          "audience": { "support": 15, "neutral": 8, "oppose": -3 },
+          "judge_note": "滑坡",
+          "cards": ["举证", "逻辑闭环"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "举证：期刊评审流程", "correct": true, "audience": { "support": 8, "neutral": 6, "oppose": -3 }, "result": "林姐点头：「流程我懂一点，确实没那么容易。」" },
+            { "text": "说「我们也是人」", "correct": false, "audience": { "support": 1, "neutral": -2, "oppose": 2 }, "result": "阿哲冷冷道：「那可以不做。」" },
+            { "text": "说「你太理想化」", "correct": false, "audience": { "support": -4, "neutral": -5, "oppose": 4 }, "result": "阿哲笑了一下：「理想化的是你。」" }
+          ]
+        },
+        "remedy": { "hint": "从「改措辞」到「改数据」，中间隔着整个科学流程。", "remove": "诉诸权威" },
+        "fallback": { "reply": "你看，你连科学怎么运转的都不清楚。", "audience": { "support": -5, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "林姐", "text": "「流程我懂一点，确实没那么容易。」" },
+          { "speaker": "老陶", "text": "（在本子上记了一笔）" }
+        ]
+      },
+      {
+        "id": "r3",
+        "claim": "最吵的人不代表所有人",
+        "speaker": "阿哲",
+        "statements": [
+          { "text": "我理解公众的接受度。", "structure": "让步", "flaw": false },
+          { "text": "可你看，网上那些骂科学家的人，有几个真读过论文？", "structure": "漏洞句", "flaw": true },
+          { "text": "所以迁就他们没意义。", "structure": "观点", "flaw": false }
+        ],
+        "question": {
+          "prompt": "这句话错在哪？",
+          "options": [
+            { "text": "以偏概全（轶事证据）", "correct": true },
+            { "text": "滑坡", "correct": false, "wrong_reply": "我没说会滑坡。", "audience": { "support": -2, "neutral": -3, "oppose": 2 }, "remedy_hint": "用最吵的一小撮代表所有人，是以偏概全。" },
+            { "text": "诉诸情感", "correct": false, "wrong_reply": "你又谈感受。", "audience": { "support": -2, "neutral": -2, "oppose": 3 }, "remedy_hint": "用最吵的一小撮代表所有人，是以偏概全。" },
+            { "text": "人身攻击", "correct": false, "wrong_reply": "我攻击谁了？我说的是现象。", "audience": { "support": -3, "neutral": -2, "oppose": 2 }, "remedy_hint": "用最吵的一小撮代表所有人，是以偏概全。" }
+          ]
+        },
+        "correct": {
+          "reply": "你看到的「骂的人」，是评论区里声音最大的那一小撮。沉默的大多数不在那儿——用最吵的样本去代表所有人，不公平。",
+          "audience": { "support": 5, "neutral": 10, "oppose": -4 },
+          "judge_note": "以偏概全（轶事证据）",
+          "cards": ["事实击穿", "逻辑镜像"]
+        },
+        "rebuttal": {
+          "prompt": "选一个最有力的回法",
+          "options": [
+            { "text": "举证：会后问卷 70% 的人说听懂了", "correct": true, "audience": { "support": 8, "neutral": 7, "oppose": -2 }, "result": "老陶举手：「我就是那 70%。」" },
+            { "text": "说「骂的人也是人」", "correct": false, "audience": { "support": 2, "neutral": -1, "oppose": 2 }, "result": "阿哲不置可否：「然后呢？」" },
+            { "text": "说「那就不管他们」", "correct": false, "audience": { "support": -5, "neutral": -6, "oppose": 4 }, "result": "林姐合上了笔记本：「你这话我不能写。」" }
+          ]
+        },
+        "remedy": { "hint": "用最吵的一小撮代表所有人，是以偏概全。", "remove": "人身攻击" },
+        "fallback": { "reply": "你看，你连听众怎么想都不知道。", "audience": { "support": -5, "neutral": -4, "oppose": 4 } },
+        "audience_note": [
+          { "speaker": "老陶", "text": "「这次我听懂了。」" },
+          { "speaker": "林姐", "text": "（她抬头看了你一眼）" }
+        ]
+      }
+    ],
+    "closing": {
+      "prompt": "结辩：最后说一句",
+      "options": [
+        { "id": "A", "text": "回扣开场：我一开始就说，结论不改，改的是怎么说。", "audience": { "support": 6, "neutral": 4, "oppose": 0 }, "tag": "呼应" },
+        { "id": "B", "text": "拔高：科学对事实负责，但科学家对「事实能不能被听见」负责。", "audience": { "support": 8, "neutral": 6, "oppose": -2 }, "tag": "立意" },
+        { "id": "C", "text": "温和：你怕的是科学被稀释，我怕的是科学被关在门里。", "audience": { "support": 2, "neutral": 8, "oppose": 6 }, "tag": "人情" }
+      ]
+    },
+    "judges": [
+      { "name": "研究者评委", "bias": "逻辑", "rule": { "min_correct_first": 2 } },
+      { "name": "媒体评委", "bias": "表达", "rule": { "closing_in": ["A", "B"], "min_rounds_won": 2 } },
+      { "name": "公众评委", "bias": "共情", "rule": { "closing_in": ["A", "C"], "min_rounds_won": 1 } }
+    ],
+    "epilogue_win": [
+      { "speaker": "阿哲", "text": "（沉默了几秒）「……你说得对，表达确实重要。」" },
+      { "speaker": "林姐", "text": "这段我能写进稿子吗？" },
+      { "speaker": "老陶", "text": "这次我听懂了。" },
+      { "speaker": "旁白", "text": "后来你才知道，阿哲上个月刚被网暴过。他不是不在乎公众，他是被「公众」伤过。" }
+    ],
+    "epilogue_lose": [
+      { "speaker": "阿哲", "text": "科学不是服务业。" },
+      { "speaker": "林姐", "text": "（她合上笔记本，没再问。）" },
+      { "speaker": "旁白", "text": "视频还是被剪了出来。评论区最高赞是：「科学家都这么傲慢吗？」" }
+    ],
+    "debrief": {
+      "note": "事实负责真假，表达负责被听见。",
+      "fallacies": ["非黑即白", "滑坡", "以偏概全"],
+      "quiz": [
+        { "q": "「兼顾情感，就是让事实让路。」", "a": "非黑即白（稻草人）" },
+        { "q": "「今天改措辞，明天就改数据。」", "a": "滑坡" },
+        { "q": "「网上骂的人都没读过论文。」", "a": "以偏概全 / 轶事证据" }
+      ]
+    }
+  }
+]

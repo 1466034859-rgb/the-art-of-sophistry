@@ -1,0 +1,49 @@
+[
+  {
+    "id": "new_year_dinner",
+    "name": "家庭年夜饭",
+    "desc": "亲戚围坐，酒杯碰撞。这里没有逻辑，只有辈分和情绪。",
+    "ambient": "EMOTION",
+    "accent": "#c48f8f",
+    "mods": {
+      "spirit_start": 5,
+      "damage_by_tag": { "EMOTION": 1.25, "FACT": 0.85 },
+      "pivot_self_damage_mult": 1.0
+    }
+  },
+  {
+    "id": "office_pantry",
+    "name": "公司茶水间",
+    "desc": "咖啡机嗡嗡作响，每个人都在笑着说话，每个人都在计算。",
+    "ambient": "LOGIC",
+    "accent": "#9fb8a0",
+    "mods": {
+      "spirit_start": 5,
+      "damage_by_tag": { "LOGIC": 1.15, "EMOTION": 0.9 }
+    }
+  },
+  {
+    "id": "midnight_comments",
+    "name": "深夜评论区",
+    "desc": "凌晨两点，匿名、疲惫、戾气。没人看事实，大家只想赢。",
+    "ambient": "EMOTION",
+    "accent": "#c48f8f",
+    "mods": {
+      "spirit_start": 5,
+      "damage_by_tag": { "EMOTION": 1.2, "FACT": 0.8 },
+      "pivot_self_damage_mult": 0.8
+    }
+  },
+  {
+    "id": "academic_cafe",
+    "name": "学术咖啡馆",
+    "desc": "拿铁、投影仪、尚未冷掉的论点。在这里，拆解是一门手艺。",
+    "ambient": "LOGIC",
+    "accent": "#7fa7c4",
+    "mods": {
+      "spirit_start": 5,
+      "damage_by_tag": { "LOGIC": 1.2, "VALUE": 0.9 },
+      "counter_heal_by_tag": { "LOGIC": 1 }
+    }
+  }
+]

@@ -1,0 +1,1484 @@
+[
+  {
+    "id": "pa01",
+    "owner": "polite_assassin",
+    "name": "礼貌认同",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "dialogue": "我完全理解你的出发点，这确实是个有趣的视角。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_polite_consensus"
+      }
+    ],
+    "move": {
+      "name": "示弱共情",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "我完全理解你的出发点——但「{claim}」这事，还是得把话说明白。"
+  },
+  {
+    "id": "pa02",
+    "owner": "polite_assassin",
+    "name": "共情铺垫",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "dialogue": "我想我们其实都希望这件事能有一个合理的结果。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_counter_up"
+      }
+    ],
+    "move": {
+      "name": "情感铺垫",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "我想我们都希望这顿饭吃得舒服——那「{claim}」就更该摊开说。"
+  },
+  {
+    "id": "pa03",
+    "owner": "polite_assassin",
+    "name": "温和修正",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "dialogue": "不过，如果我们稍微调整一下定义，可能会更精准。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_slow"
+      }
+    ],
+    "move": {
+      "name": "重新定义",
+      "fallacy": "偷换概念",
+      "lesson": "先重新定义关键词，再在对方没察觉时把结论换掉。"
+    },
+    "target": "「{claim}」这个说法，恐怕得先把「越界」两个字定义清楚。"
+  },
+  {
+    "id": "pa04",
+    "owner": "polite_assassin",
+    "name": "引导质疑",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "那么，如果按照你的逻辑推演下去，是不是意味着……？",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_pivot"
+      }
+    ],
+    "move": {
+      "name": "反问诱导",
+      "fallacy": "诱导性提问",
+      "lesson": "用一个看似中立的反问，把对方逼到自己也不愿意接受的结论上。"
+    },
+    "target": "照你这么说，「{claim}」推下去，是不是连表姐今年不回来过年都有理了？",
+    "reply": "你对「{claim}」的理解，是不是把两件事混成一件了？"
+  },
+  {
+    "id": "pa05",
+    "owner": "polite_assassin",
+    "name": "精准拆解",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "这是一个很诚恳的观点，可惜它在逻辑上并不成立。",
+    "counter_effects": [
+      {
+        "op": "clear_status",
+        "target": "enemy",
+        "kind": "buff"
+      }
+    ],
+    "move": {
+      "name": "归谬拆解",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」听着顺，可惜前提就不成立。",
+    "reply": "「{claim}」听着顺，可惜前提不成立。"
+  },
+  {
+    "id": "pa06",
+    "owner": "polite_assassin",
+    "name": "矛盾指出",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "有趣的是，这和你刚才说的 A 似乎是相反的。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_doubt"
+      }
+    ],
+    "move": {
+      "name": "抓矛盾",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "刚才你还说「{last_move}」，现在又提「{claim}」——这俩打架了。",
+    "reply": "你上句说「{last_move}」，这句又「{claim}」——这俩打架了。"
+  },
+  {
+    "id": "pa07",
+    "owner": "polite_assassin",
+    "name": "优雅反转",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "damage": 2,
+    "self_damage": 1,
+    "dialogue": "谢谢你的铺垫，这恰好证明了我想说的观点。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_cognitive_collapse"
+      }
+    ],
+    "move": {
+      "name": "借力打力",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "谢谢你替我把「{claim}」抬出来——它恰好能反着用。",
+    "reply": "谢谢你把「{claim}」递过来——正好反着用。"
+  },
+  {
+    "id": "pa08",
+    "owner": "polite_assassin",
+    "name": "最终结论",
+    "type": "PIVOT",
+    "tag": "VALUE",
+    "cost": 2,
+    "damage": 1,
+    "self_damage": 1,
+    "dialogue": "我想我们已经达成共识了，这个问题其实很简单。",
+    "effects": [
+      {
+        "op": "if",
+        "cond": {
+          "c": "enemy_lost_spirit",
+          "v": 3
+        },
+        "then": [
+          {
+            "op": "damage",
+            "amount": 3
+          }
+        ]
+      }
+    ],
+    "move": {
+      "name": "强行收束",
+      "fallacy": "虚假两难",
+      "lesson": "把复杂处境压成两个选项，逼对方在坏与更坏之间选一个。"
+    },
+    "target": "「{claim}」这事，我想我们已经可以收尾了。",
+    "reply": "「{claim}」到这，可以收尾了。"
+  },
+  {
+    "id": "pa09",
+    "owner": "polite_assassin",
+    "name": "缓兵之计",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "dialogue": "这个问题很复杂，我想我们需要先达成一个共识。",
+    "effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      },
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_wide_window"
+      }
+    ],
+    "move": {
+      "name": "拖延共情",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」不急，咱们先把这顿饭的共识找出来。"
+  },
+  {
+    "id": "pa10",
+    "owner": "polite_assassin",
+    "name": "定义权夺取",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "你刚才说的 A，其实在专业语境里应该叫 B。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_shaken"
+      }
+    ],
+    "move": {
+      "name": "争夺定义权",
+      "fallacy": "偷换概念",
+      "lesson": "谁定义关键词，谁就决定了讨论往哪走。"
+    },
+    "target": "你说的「{claim}」，在我们这儿得换个说法：越界不叫关心。",
+    "reply": "你说的「{claim}」得换个说法：越界不叫关心。"
+  },
+  {
+    "id": "pa11",
+    "owner": "polite_assassin",
+    "name": "礼貌沉默",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "dialogue": "（微微一笑）我不知道该怎么评价这种逻辑。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ap_tax"
+      }
+    ],
+    "move": {
+      "name": "冷处理",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "（笑而不语，把茶杯放下）「{claim}」这句，我不接。"
+  },
+  {
+    "id": "pa12",
+    "owner": "polite_assassin",
+    "name": "委婉反驳",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "虽然你的说法很独特，但恐怕在现实中行不通。",
+    "counter_effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "温和否定",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」听着体面，可在饭桌上行不通。",
+    "reply": "「{claim}」听着体面，饭桌上行不通。"
+  },
+  {
+    "id": "pa13",
+    "owner": "polite_assassin",
+    "name": "引导闭环",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "silence_penalty": 2,
+    "dialogue": "如果我们同意 A，那么 B 自然也就成立了，对吧？",
+    "move": {
+      "name": "诱导承诺",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "既然你认了「{claim}」前半句，那后半句你也得认。"
+  },
+  {
+    "id": "pa14",
+    "owner": "polite_assassin",
+    "name": "逻辑闭环",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "damage": 2,
+    "dialogue": "所以，你的所有论点最终都指向了同一个矛盾。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_construction",
+        "dur": 2
+      }
+    ],
+    "move": {
+      "name": "归谬",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」推到底，就只剩一个矛盾。",
+    "reply": "「{claim}」推到底，只剩一个矛盾。"
+  },
+  {
+    "id": "pa15",
+    "owner": "polite_assassin",
+    "name": "体面离场",
+    "type": "PIVOT",
+    "tag": "VALUE",
+    "cost": 2,
+    "dialogue": "就到这里吧，我想我们已经把能讨论的都讨论完了。",
+    "effects": [
+      {
+        "op": "execute",
+        "mode": "leading",
+        "enemy_spirit_lte": 3
+      }
+    ],
+    "move": {
+      "name": "抽身收场",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」就到这儿吧，再说下去不好看。",
+    "reply": "「{claim}」就到这儿吧。"
+  },
+  {
+    "id": "fc01",
+    "owner": "fact_checker",
+    "name": "数据摊牌",
+    "type": "CONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "根据最新的统计数据，这种情况发生的概率仅为 0.3%。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_fact_anchor"
+      }
+    ],
+    "silence_penalty": 1,
+    "move": {
+      "name": "举证",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "{material}——关于「{claim}」，先看这个。"
+  },
+  {
+    "id": "fc02",
+    "owner": "fact_checker",
+    "name": "文献引用",
+    "type": "CONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "关于这一点，在相关领域已有明确的定论。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_slow"
+      }
+    ],
+    "move": {
+      "name": "权威引用",
+      "fallacy": "诉诸权威",
+      "lesson": "用「专家/资料」代替论证，气势很足，但权威也会错。"
+    },
+    "target": "关于「{claim}」，相关领域早有定论。"
+  },
+  {
+    "id": "fc03",
+    "owner": "fact_checker",
+    "name": "来源质疑",
+    "type": "DECONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "请问你这个结论的来源是什么？是个人经验还是实证？",
+    "effects": [
+      {
+        "op": "if",
+        "cond": {
+          "c": "enemy_hand_has_tag",
+          "v": "FACT"
+        },
+        "then": [
+          {
+            "op": "log",
+            "text": "对方还真拿得出证据——这一击只算常规伤害。"
+          }
+        ],
+        "else": [
+          {
+            "op": "damage",
+            "amount": 2
+          }
+        ]
+      }
+    ],
+    "move": {
+      "name": "举证责任转移",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "你说「{claim}」，来源呢？个人经验还是实证？",
+    "reply": "你说「{claim}」，来源呢？"
+  },
+  {
+    "id": "fc04",
+    "owner": "fact_checker",
+    "name": "漏洞核查",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "你的论据 A 与结论 B 之间存在明显的逻辑断层。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_shaken"
+      }
+    ],
+    "move": {
+      "name": "拆逻辑",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{last_move}」和「{claim}」之间，断了整整一层。",
+    "reply": "「{last_move}」和「{claim}」之间断了层。"
+  },
+  {
+    "id": "fc05",
+    "owner": "fact_checker",
+    "name": "事实击穿",
+    "type": "PIVOT",
+    "tag": "FACT",
+    "cost": 2,
+    "damage": 2,
+    "self_damage": 1,
+    "dialogue": "事实胜于雄辩，这里有一份截屏证明你错了。",
+    "effects": [
+      {
+        "op": "clear_status",
+        "target": "enemy",
+        "kind": "buff"
+      }
+    ],
+    "move": {
+      "name": "铁证压制",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "{material}——「{claim}」这个说法，证据在这儿。",
+    "reply": "{material}——「{claim}」，证据在这儿。"
+  },
+  {
+    "id": "fc06",
+    "owner": "fact_checker",
+    "name": "定义修正",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "damage": 1,
+    "dialogue": "你混淆了 A 和 B 的概念，这是一个基础认知错误。",
+    "effects": [
+      {
+        "op": "discard",
+        "target": "enemy",
+        "count": 1
+      },
+      {
+        "op": "damage",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "概念纠错",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "你把「{claim}」里的两个概念搅在一起了。",
+    "reply": "你把「{claim}」里的两个概念搅在一起了。"
+  },
+  {
+    "id": "fc07",
+    "owner": "fact_checker",
+    "name": "冷漠回应",
+    "type": "CONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "这不重要，重要的是事实是——",
+    "effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "冷处理",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」不重要，重要的是事实——"
+  },
+  {
+    "id": "fc08",
+    "owner": "fact_checker",
+    "name": "逻辑封锁",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "在没有证据之前，你的所有推论都只是假设。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_pivot"
+      }
+    ],
+    "move": {
+      "name": "举证责任",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」现在还只是假设，别当结论用。",
+    "reply": "「{claim}」还只是假设。"
+  },
+  {
+    "id": "fc09",
+    "owner": "fact_checker",
+    "name": "精准打击",
+    "type": "CONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "在这个具体的时间点，事实是 A 发生了，而不是 B。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_slow"
+      }
+    ],
+    "silence_penalty": 1,
+    "move": {
+      "name": "举证",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "就在今天，{material}——所以「{claim}」不成立。"
+  },
+  {
+    "id": "fc10",
+    "owner": "fact_checker",
+    "name": "定义权垄断",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "在这个讨论中，我们必须首先统一对 A 的定义。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_definition"
+      }
+    ],
+    "move": {
+      "name": "争夺定义权",
+      "fallacy": "偷换概念",
+      "lesson": "先统一关键词的定义，再让对方在你的框架里说话。"
+    },
+    "target": "要谈「{claim}」，先统一「越界」这个词的定义。"
+  },
+  {
+    "id": "fc11",
+    "owner": "fact_checker",
+    "name": "逻辑推演",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "如果 A 成立，那么 B 成立，进而 C 必然成立。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_bleed_heavy"
+      }
+    ],
+    "move": {
+      "name": "连锁推演",
+      "fallacy": "滑坡谬误",
+      "lesson": "一步接一步推下去，每一步都看似合理，结论却越滑越远。"
+    },
+    "target": "「{claim}」成立，那下一步就必然成立。"
+  },
+  {
+    "id": "fc12",
+    "owner": "fact_checker",
+    "name": "证伪攻击",
+    "type": "DECONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "只要我举出一个反例，你的整个理论就崩溃了。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_construction"
+      }
+    ],
+    "silence_penalty": 1,
+    "move": {
+      "name": "举反例",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "{material}——一个反例，「{claim}」就倒了。",
+    "reply": "{material}——一个反例，「{claim}」就倒。"
+  },
+  {
+    "id": "fc13",
+    "owner": "fact_checker",
+    "name": "实证压制",
+    "type": "CONSTRUCTION",
+    "tag": "FACT",
+    "damage": 1,
+    "dialogue": "我建议你先去读一下相关的基础资料再来讨论。",
+    "effects": [
+      {
+        "op": "ap",
+        "target": "enemy",
+        "amount": -1
+      }
+    ],
+    "move": {
+      "name": "证据压制",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」之前，建议先看看基础事实。"
+  },
+  {
+    "id": "fc14",
+    "owner": "fact_checker",
+    "name": "逻辑镜像",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "self_damage": 1,
+    "dialogue": "你刚才使用的逻辑，现在我把它用在你的论点上。",
+    "effects": [
+      {
+        "op": "reflect_damage",
+        "mult": 2,
+        "min": 2
+      }
+    ],
+    "move": {
+      "name": "以彼之道",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "你用「{last_move}」推「{claim}」，现在我用同一招推你。",
+    "reply": "你用「{last_move}」推「{claim}」，我用同一招推你。"
+  },
+  {
+    "id": "fc15",
+    "owner": "fact_checker",
+    "name": "定论宣告",
+    "type": "PIVOT",
+    "tag": "FACT",
+    "cost": 2,
+    "damage": 2,
+    "self_damage": 2,
+    "dialogue": "综上所述，这件事已经没有任何讨论的必要了。",
+    "effects": [
+      {
+        "op": "clear_status",
+        "target": "enemy",
+        "kind": "buff"
+      }
+    ],
+    "move": {
+      "name": "强行定论",
+      "fallacy": "过早定论",
+      "lesson": "在还没听完对方论证时，就宣布「没有讨论的必要」。"
+    },
+    "target": "{material}——「{claim}」，没有讨论的必要了。",
+    "reply": "{material}——「{claim}」，不必再谈。"
+  },
+  {
+    "id": "em01",
+    "owner": "empath",
+    "name": "情绪同步",
+    "type": "CONSTRUCTION",
+    "tag": "EMOTION",
+    "damage": 1,
+    "dialogue": "我完全能感受到你现在的焦虑，这很正常。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_shaken"
+      }
+    ],
+    "move": {
+      "name": "共情",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "我懂你为什么提「{claim}」，你是怕——"
+  },
+  {
+    "id": "em02",
+    "owner": "empath",
+    "name": "道德高地",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "dialogue": "我这么说，是因为我真心希望这件事能有个好结果。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_high_ground"
+      }
+    ],
+    "move": {
+      "name": "占据高地",
+      "fallacy": "道德绑架",
+      "lesson": "先把自己放在道德高地上，再要求对方按你的标准行事。"
+    },
+    "target": "我说「{claim}」，是真希望这顿饭别难看。"
+  },
+  {
+    "id": "em03",
+    "owner": "empath",
+    "name": "心理投射",
+    "type": "DECONSTRUCTION",
+    "tag": "EMOTION",
+    "damage": 1,
+    "dialogue": "你现在这么激动，是不是因为你内心其实很心虚？",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_shaken"
+      }
+    ],
+    "move": {
+      "name": "心理投射",
+      "fallacy": "读心谬误",
+      "lesson": "替对方说出他「真正」的想法，然后攻击那个版本。"
+    },
+    "target": "你一直强调「{claim}」，是不是心里也没底？",
+    "reply": "你一直强调「{claim}」，是不是心里没底？"
+  },
+  {
+    "id": "em04",
+    "owner": "empath",
+    "name": "价值审判",
+    "type": "DECONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "dialogue": "一个真正关心别人的人，不应该这样说话。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_guilt"
+      }
+    ],
+    "move": {
+      "name": "道德审判",
+      "fallacy": "道德绑架",
+      "lesson": "把具体分歧上升为人品问题，让对方先自证清白。"
+    },
+    "target": "一个真在乎家人的人，不会拿「{claim}」压人。",
+    "reply": "真在乎家人的人，不会拿「{claim}」压人。"
+  },
+  {
+    "id": "em05",
+    "owner": "empath",
+    "name": "情感反噬",
+    "type": "PIVOT",
+    "tag": "EMOTION",
+    "cost": 2,
+    "damage": 1,
+    "self_damage": 1,
+    "dialogue": "你怎么能如此冷酷地对待一个真实的感受？",
+    "effects": [
+      {
+        "op": "reflect_damage",
+        "mult": 1,
+        "min": 2
+      },
+      {
+        "op": "lose_spirit",
+        "target": "enemy",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "情绪反噬",
+      "fallacy": "诉诸情感",
+      "lesson": "用对方的情绪反应当论据，绕开事实本身。"
+    },
+    "target": "你怎么能把「{claim}」说得这么冷？",
+    "reply": "你怎么把「{claim}」说得这么冷？"
+  },
+  {
+    "id": "em06",
+    "owner": "empath",
+    "name": "共情陷阱",
+    "type": "PIVOT",
+    "tag": "VALUE",
+    "cost": 2,
+    "dialogue": "我想我们其实是在同一条船上的，没必要这么僵。",
+    "effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 2
+      },
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_deconstruction"
+      }
+    ],
+    "move": {
+      "name": "拉近关系",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」这事，咱们其实是一条船上的。",
+    "reply": "「{claim}」这事，咱们一条船上。"
+  },
+  {
+    "id": "em07",
+    "owner": "empath",
+    "name": "温柔陷阱",
+    "type": "CONSTRUCTION",
+    "tag": "EMOTION",
+    "dialogue": "没关系，你慢慢说，我一直在听。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ap_tax"
+      },
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_soften"
+      }
+    ],
+    "move": {
+      "name": "以柔克刚",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」你慢慢说，我听着。"
+  },
+  {
+    "id": "em08",
+    "owner": "empath",
+    "name": "认知操纵",
+    "type": "DECONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "dialogue": "你所谓的「理性」，其实只是在掩盖你的自私。",
+    "counter_effects": [
+      {
+        "op": "damage",
+        "amount": 1
+      },
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_exposed"
+      }
+    ],
+    "move": {
+      "name": "动机揣测",
+      "fallacy": "人身攻击",
+      "lesson": "不驳论点，改驳动机——「你这么说是因为……」"
+    },
+    "target": "你讲「{claim}」这么硬，是在掩什么？",
+    "reply": "你讲「{claim}」这么硬，是在掩什么？"
+  },
+  {
+    "id": "em09",
+    "owner": "empath",
+    "name": "情感共鸣",
+    "type": "CONSTRUCTION",
+    "tag": "EMOTION",
+    "dialogue": "我想任何人在这种情况下都会有同样的感受。",
+    "effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      },
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_resonance"
+      }
+    ],
+    "move": {
+      "name": "共情共鸣",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "换谁被问「{claim}」，都会不好受。"
+  },
+  {
+    "id": "em10",
+    "owner": "empath",
+    "name": "委屈反击",
+    "type": "DECONSTRUCTION",
+    "tag": "EMOTION",
+    "damage": 1,
+    "dialogue": "我只是在试图沟通，为什么你一定要这么攻击我？",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_pressure"
+      }
+    ],
+    "move": {
+      "name": "受害者姿态",
+      "fallacy": "诉诸怜悯",
+      "lesson": "把自己放在受害位置，让对方为「让你难受」负责。"
+    },
+    "target": "我只是想好好说「{claim}」，你为什么这样？",
+    "reply": "我只想好好说「{claim}」，你为什么这样？"
+  },
+  {
+    "id": "em11",
+    "owner": "empath",
+    "name": "心理按摩",
+    "type": "CONSTRUCTION",
+    "tag": "VALUE",
+    "dialogue": "其实你不需要这么强硬，我也认同你的一部分观点。",
+    "effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 2
+      },
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_shaken"
+      }
+    ],
+    "move": {
+      "name": "安抚",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」你不用这么硬，我也认一部分。"
+  },
+  {
+    "id": "em12",
+    "owner": "empath",
+    "name": "价值解构",
+    "type": "DECONSTRUCTION",
+    "tag": "VALUE",
+    "damage": 1,
+    "dialogue": "你追求的所谓「正确」，其实只是为了满足虚荣心。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_construction"
+      }
+    ],
+    "move": {
+      "name": "价值解构",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "你追着「{claim}」不放，图的是道理吗？",
+    "reply": "你追着「{claim}」不放，图的是道理吗？"
+  },
+  {
+    "id": "em13",
+    "owner": "empath",
+    "name": "深度链接",
+    "type": "CONSTRUCTION",
+    "tag": "EMOTION",
+    "dialogue": "让我们抛开这些争执，谈谈这件事背后真正的痛苦。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_defenseless"
+      }
+    ],
+    "move": {
+      "name": "转移焦点",
+      "fallacy": "红鲱鱼",
+      "lesson": "把话题岔到「你真正的痛苦」上，避开要回答的问题。"
+    },
+    "target": "先别争「{claim}」了，说说你真正怕的是什么。"
+  },
+  {
+    "id": "em14",
+    "owner": "empath",
+    "name": "灵魂拷问",
+    "type": "PIVOT",
+    "tag": "VALUE",
+    "cost": 2,
+    "damage": 2,
+    "self_damage": 1,
+    "dialogue": "你真的认为，这种逻辑能让你在深夜睡得安稳吗？",
+    "effects": [
+      {
+        "op": "discard",
+        "target": "enemy",
+        "count": 2
+      }
+    ],
+    "move": {
+      "name": "灵魂拷问",
+      "fallacy": "道德绑架",
+      "lesson": "用一句无法回答的道德提问结束对话，让对方闭嘴。"
+    },
+    "target": "「{claim}」？你今晚睡得着吗？",
+    "reply": "「{claim}」？你今晚睡得着吗？"
+  },
+  {
+    "id": "em15",
+    "owner": "empath",
+    "name": "温柔终结",
+    "type": "PIVOT",
+    "tag": "EMOTION",
+    "cost": 2,
+    "self_damage": 1,
+    "dialogue": "好吧，我原谅你了，因为你真的太可怜了。",
+    "effects": [
+      {
+        "op": "if",
+        "cond": {
+          "c": "enemy_spirit_lte",
+          "v": 2
+        },
+        "then": [
+          {
+            "op": "execute",
+            "mode": "enemy_below",
+            "v": 2
+          }
+        ],
+        "else": [
+          {
+            "op": "damage",
+            "amount": 2
+          },
+          {
+            "op": "heal",
+            "target": "self",
+            "amount": 1
+          }
+        ]
+      }
+    ],
+    "move": {
+      "name": "居高临下",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」我不跟你争了，你太可怜。",
+    "reply": "「{claim}」我不争了，你太可怜。"
+  },
+  {
+    "id": "cn01",
+    "owner": "contrarian",
+    "name": "反向认同",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "虽然你说的没错，但我依然不认同你的结论。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_undeniable"
+      }
+    ],
+    "move": {
+      "name": "假意认同",
+      "fallacy": "稻草人",
+      "lesson": "先假装接受对方一部分，再打掉一个更弱的目标。"
+    },
+    "target": "「{claim}」我同意一半——但结论我不认。"
+  },
+  {
+    "id": "cn02",
+    "owner": "contrarian",
+    "name": "逻辑跳跃",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "既然 A 是对的，那么顺理成章地，C 也是对的。",
+    "effects": [
+      {
+        "op": "random",
+        "options": [
+          [
+            {
+              "op": "damage",
+              "amount": 2
+            }
+          ],
+          [
+            {
+              "op": "heal",
+              "target": "self",
+              "amount": 2
+            }
+          ]
+        ]
+      }
+    ],
+    "move": {
+      "name": "跳跃推演",
+      "fallacy": "滑坡谬误",
+      "lesson": "从一个小前提一路跳到荒谬结论，中间步骤全靠气势。"
+    },
+    "target": "「{claim}」都成立了，那再推一步也没什么吧？"
+  },
+  {
+    "id": "cn03",
+    "owner": "contrarian",
+    "name": "矛盾捕捉",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "你刚才说 A，现在又说 B，你自洽了吗？",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_confusion"
+      }
+    ],
+    "move": {
+      "name": "抓矛盾",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "你前一句还是「{last_move}」，这一句就「{claim}」了？",
+    "reply": "你上一句「{last_move}」，这一句「{claim}」？"
+  },
+  {
+    "id": "cn04",
+    "owner": "contrarian",
+    "name": "呵呵之术",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "呵呵，你认真的吗？",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_shaken"
+      },
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "轻蔑打断",
+      "fallacy": "诉诸嘲讽",
+      "lesson": "不回应内容，只用语气否定对方的人格或智力。"
+    },
+    "target": "呵呵，「{claim}」？你认真的？",
+    "reply": "呵呵，「{claim}」？你认真的？"
+  },
+  {
+    "id": "cn05",
+    "owner": "contrarian",
+    "name": "反转定义",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "self_damage": 1,
+    "dialogue": "你管这叫「事实」？在我的字典里，这叫「妄想」。",
+    "effects": [
+      {
+        "op": "reflect_damage",
+        "mult": 2,
+        "min": 2
+      }
+    ],
+    "move": {
+      "name": "反向定义",
+      "fallacy": "偷换概念",
+      "lesson": "把对方的词收进自己的字典，再宣布对方用错了。"
+    },
+    "target": "你管这叫「{claim}」？在我字典里这叫找茬。",
+    "reply": "你管这叫「{claim}」？这叫找茬。"
+  },
+  {
+    "id": "cn06",
+    "owner": "contrarian",
+    "name": "话题漂移",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "dialogue": "这不重要，重要的是你三年前在朋友圈发过什么。",
+    "effects": [
+      {
+        "op": "clear_status",
+        "target": "enemy",
+        "kind": "buff"
+      },
+      {
+        "op": "shuffle",
+        "target": "enemy"
+      }
+    ],
+    "move": {
+      "name": "转移话题",
+      "fallacy": "红鲱鱼",
+      "lesson": "用一件不相关的旧事把水搅浑，让原问题消失。"
+    },
+    "target": "「{claim}」先放放，你去年那条朋友圈怎么解释？",
+    "reply": "「{claim}」先放放，你去年那条朋友圈呢？"
+  },
+  {
+    "id": "cn07",
+    "owner": "contrarian",
+    "name": "强行扣帽",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "你这种说法，明显就是典型的某一类倾向。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_pressure"
+      }
+    ],
+    "move": {
+      "name": "扣帽子",
+      "fallacy": "人身攻击",
+      "lesson": "先给对方归类，再攻击这个类别，省去论证。"
+    },
+    "target": "张口就是「{claim}」，你这类人我见多了。"
+  },
+  {
+    "id": "cn08",
+    "owner": "contrarian",
+    "name": "极限反讽",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "哎呀，您真是太聪明了，聪明到我都快跟不上您了。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_breakdown"
+      }
+    ],
+    "move": {
+      "name": "反讽",
+      "fallacy": "诉诸嘲讽",
+      "lesson": "用过度赞美的反话，让对方无法正经反驳。"
+    },
+    "target": "您太聪明了，「{claim}」都能说得这么圆。",
+    "reply": "您太聪明，「{claim}」都能说这么圆。"
+  },
+  {
+    "id": "cn09",
+    "owner": "contrarian",
+    "name": "杠精之魂",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "首先，你得定义一下什么叫「正确」。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_slow"
+      }
+    ],
+    "move": {
+      "name": "要求定义",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "先定义一下，你说的「{claim}」到底指什么。"
+  },
+  {
+    "id": "cn10",
+    "owner": "contrarian",
+    "name": "强行闭环",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "所以你看，我的结论其实和你的一样，只是我更正确。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "self",
+        "id": "st_counter_up"
+      }
+    ],
+    "move": {
+      "name": "强行自洽",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」其实跟我一个意思，只是我更对。"
+  },
+  {
+    "id": "cn11",
+    "owner": "contrarian",
+    "name": "逻辑陷阱",
+    "type": "DECONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "既然你同意 A，那么你必须接受 B，除非你承认自己错了。",
+    "counter_effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_ban_construction"
+      }
+    ],
+    "move": {
+      "name": "设套",
+      "fallacy": "虚假两难",
+      "lesson": "先逼对方承认一半，再让他承担不愿接受的另一半。"
+    },
+    "target": "你既然认了「{claim}」，就得接受后面那半句。",
+    "reply": "你认了「{claim}」，后面那半句也得认。"
+  },
+  {
+    "id": "cn12",
+    "owner": "contrarian",
+    "name": "反向反驳",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "dialogue": "你试图反驳我？这恰恰证明了我的论点是对的！",
+    "effects": [
+      {
+        "op": "reflect_damage",
+        "mult": 1,
+        "min": 2
+      },
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "反打",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "你反驳「{claim}」？这正好说明我说对了。",
+    "reply": "你反驳「{claim}」？这正好说明我说对了。"
+  },
+  {
+    "id": "cn13",
+    "owner": "contrarian",
+    "name": "歪理大成",
+    "type": "CONSTRUCTION",
+    "tag": "LOGIC",
+    "damage": 1,
+    "dialogue": "事实上，这种现象在很多地方都被证明是合理的。",
+    "effects": [
+      {
+        "op": "heal",
+        "target": "self",
+        "amount": 1
+      }
+    ],
+    "move": {
+      "name": "编造依据",
+      "fallacy": "虚假论据",
+      "lesson": "用「很多地方都证明过」这类空话替代具体证据。"
+    },
+    "target": "「{claim}」这种事，哪儿都证明过。"
+  },
+  {
+    "id": "cn14",
+    "owner": "contrarian",
+    "name": "逻辑死循环",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "self_damage": 1,
+    "dialogue": "因为它是真理所以它正确，因为它正确所以它是真理。",
+    "effects": [
+      {
+        "op": "status",
+        "target": "enemy",
+        "id": "st_loop"
+      }
+    ],
+    "move": {
+      "name": "循环论证",
+      "fallacy": "循环论证",
+      "lesson": "用结论证明前提，再用前提证明结论，绕成一个圈。"
+    },
+    "target": "「{claim}」对，因为它对；它对，因为「{claim}」。",
+    "reply": "「{claim}」对因为它对；它对因为「{claim}」。"
+  },
+  {
+    "id": "cn15",
+    "owner": "contrarian",
+    "name": "最终反讽",
+    "type": "PIVOT",
+    "tag": "LOGIC",
+    "cost": 2,
+    "damage": 2,
+    "self_damage": 1,
+    "dialogue": "这场辩论最有趣的地方在于，你居然认为你能赢。",
+    "effects": [
+      {
+        "op": "if",
+        "cond": {
+          "c": "enemy_spirit_lte",
+          "v": 2
+        },
+        "then": [
+          {
+            "op": "execute",
+            "mode": "chance_win",
+            "chance": 0.35
+          }
+        ]
+      }
+    ],
+    "move": {
+      "name": "反讽绝杀",
+      "fallacy": "",
+      "lesson": ""
+    },
+    "target": "「{claim}」？你居然觉得你能赢。",
+    "reply": "「{claim}」？你居然觉得你能赢。"
+  }
+]

@@ -1,0 +1,12 @@
+# Godot 4 生成物
+.godot/
+export/
+exports/
+
+# headless 沙箱运行时重定向的 user:// 目录（见 tools/dev.ps1）
+.appdata/
+
+# 系统垃圾
+*.tmp
+Thumbs.db
+desktop.ini

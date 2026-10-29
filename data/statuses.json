@@ -1,0 +1,226 @@
+{
+  "st_reckon": {
+    "name": "蓄势",
+    "kind": "buff",
+    "desc": "下一次出手更有底气，造成伤害 +1。",
+    "duration": 2,
+    "mods": { "outgoing_damage_flat": 1 }
+  },
+  "st_counter_up": {
+    "name": "拆解预备",
+    "kind": "buff",
+    "desc": "已经想好怎么反驳，拆解伤害 +1。",
+    "duration": 2,
+    "mods": { "counter_damage_flat": 1 }
+  },
+  "st_polite_consensus": {
+    "name": "礼貌共识",
+    "kind": "buff",
+    "desc": "气氛被你稳住了，拆解伤害 +1。",
+    "duration": 2,
+    "mods": { "counter_damage_flat": 1 }
+  },
+  "st_resonance": {
+    "name": "共鸣",
+    "kind": "buff",
+    "desc": "对方开始跟着你的节奏走，造成伤害 +1。",
+    "duration": 2,
+    "mods": { "outgoing_damage_flat": 1 }
+  },
+  "st_guard": {
+    "name": "沉稳",
+    "kind": "buff",
+    "desc": "不动如山，受到的伤害降低 20%。",
+    "duration": 2,
+    "mods": { "incoming_damage_mult": -0.2 }
+  },
+  "st_high_ground": {
+    "name": "道德高地",
+    "kind": "buff",
+    "desc": "任何攻击你的人都有 25% 概率被道德压力反噬。",
+    "duration": 3,
+    "mods": { "on_attack_self_damage_chance": 0.25, "on_attack_self_damage": 1 }
+  },
+  "st_undeniable": {
+    "name": "无法被定义",
+    "kind": "buff",
+    "desc": "你滑不留手，受到的伤害降低 20%。",
+    "duration": 2,
+    "mods": { "incoming_damage_mult": -0.2 }
+  },
+  "st_wide_window": {
+    "name": "缓兵之计",
+    "kind": "buff",
+    "desc": "把话题拖住了，你的响应窗口延长 1 秒。",
+    "duration": 1,
+    "mods": { "response_time_delta": 1.0 }
+  },
+  "st_fact_anchor": {
+    "name": "事实锚点",
+    "kind": "buff",
+    "desc": "事实已经钉死，造成伤害 +1。",
+    "duration": 2,
+    "mods": { "outgoing_damage_flat": 1 }
+  },
+  "st_tempo": {
+    "name": "节奏在手",
+    "kind": "buff",
+    "desc": "你掌握了话语节奏，造成伤害 +20%。",
+    "duration": 2,
+    "mods": { "outgoing_damage_mult": 0.2 }
+  },
+  "st_shaken": {
+    "name": "动摇",
+    "kind": "debuff",
+    "desc": "被说中了，造成伤害 -1。",
+    "duration": 1,
+    "mods": { "outgoing_damage_flat": -1 }
+  },
+  "st_exposed": {
+    "name": "被看穿",
+    "kind": "debuff",
+    "desc": "心思被翻了出来，受到的伤害 +25%。",
+    "duration": 2,
+    "mods": { "incoming_damage_mult": 0.25 }
+  },
+  "st_doubt": {
+    "name": "自我怀疑",
+    "kind": "debuff",
+    "desc": "开始怀疑自己，造成伤害 -1。",
+    "duration": 1,
+    "mods": { "outgoing_damage_flat": -1 }
+  },
+  "st_ban_pivot": {
+    "name": "禁诡辩",
+    "kind": "debuff",
+    "desc": "说不出漂亮话，无法使用诡辩卡。",
+    "duration": 1,
+    "mods": { "ban_type": "PIVOT" }
+  },
+  "st_ban_construction": {
+    "name": "禁立论",
+    "kind": "debuff",
+    "desc": "立不住脚，无法使用构建卡。",
+    "duration": 1,
+    "mods": { "ban_type": "CONSTRUCTION" }
+  },
+  "st_ban_deconstruction": {
+    "name": "禁拆解",
+    "kind": "debuff",
+    "desc": "找不到破绽，无法使用拆解卡。",
+    "duration": 1,
+    "mods": { "ban_type": "DECONSTRUCTION" }
+  },
+  "st_ban_response": {
+    "name": "哑口",
+    "kind": "debuff",
+    "desc": "被彻底问住，本回合无法响应。",
+    "duration": 1,
+    "mods": { "ban_response": 1 }
+  },
+  "st_slow": {
+    "name": "迟钝",
+    "kind": "debuff",
+    "desc": "反应慢了半拍，响应窗口缩短 1 秒。",
+    "duration": 1,
+    "mods": { "response_time_delta": -1.0 }
+  },
+  "st_ap_tax": {
+    "name": "额外消耗",
+    "kind": "debuff",
+    "desc": "说话变得费劲，出牌 AP 消耗 +1。",
+    "duration": 1,
+    "mods": { "ap_cost_delta": 1 }
+  },
+  "st_ap_drain": {
+    "name": "精力流失",
+    "kind": "debuff",
+    "desc": "下回合 AP -1。",
+    "duration": 1,
+    "mods": { "ap_delta": -1 }
+  },
+  "st_bleed": {
+    "name": "心气渗漏",
+    "kind": "debuff",
+    "desc": "每回合开始时流失 1 点心气。",
+    "duration": 2,
+    "mods": { "dot": 1 }
+  },
+  "st_bleed_heavy": {
+    "name": "千疮百孔",
+    "kind": "debuff",
+    "desc": "每回合开始时流失 1 点心气，持续 3 回合。",
+    "duration": 3,
+    "mods": { "dot": 1 }
+  },
+  "st_guilt": {
+    "name": "内疚",
+    "kind": "debuff",
+    "desc": "心里过意不去，造成伤害 -1。",
+    "duration": 2,
+    "mods": { "outgoing_damage_flat": -1 }
+  },
+  "st_pressure": {
+    "name": "压力",
+    "kind": "debuff",
+    "desc": "被压得喘不过气，每回合流失 1 点心气。",
+    "duration": 2,
+    "mods": { "dot": 1 }
+  },
+  "st_confusion": {
+    "name": "逻辑混乱",
+    "kind": "debuff",
+    "desc": "脑子乱成一团，造成伤害 -1。",
+    "duration": 2,
+    "mods": { "outgoing_damage_flat": -1 }
+  },
+  "st_cognitive_collapse": {
+    "name": "认知崩塌",
+    "kind": "debuff",
+    "desc": "世界观裂开了，受到的伤害 +50%。",
+    "duration": 2,
+    "mods": { "incoming_damage_mult": 0.5 }
+  },
+  "st_defenseless": {
+    "name": "卸防",
+    "kind": "debuff",
+    "desc": "防线被卸下，受到的伤害 +40%。",
+    "duration": 2,
+    "mods": { "incoming_damage_mult": 0.4 }
+  },
+  "st_breakdown": {
+    "name": "破防",
+    "kind": "debuff",
+    "desc": "已经绷不住了，受到的伤害 +30%。",
+    "duration": 1,
+    "mods": { "incoming_damage_mult": 0.3 }
+  },
+  "st_definition": {
+    "name": "定义域",
+    "kind": "debuff",
+    "desc": "话语权被对方垄断，受到的伤害 +20%。",
+    "duration": 2,
+    "mods": { "incoming_damage_mult": 0.2 }
+  },
+  "st_soften": {
+    "name": "软柿子",
+    "kind": "debuff",
+    "desc": "气势被压下去了，反击概率降低 35%。",
+    "duration": 2,
+    "mods": { "enemy_response_chance_delta": -0.35 }
+  },
+  "st_rage": {
+    "name": "应激",
+    "kind": "debuff",
+    "desc": "又怒又急：造成伤害 +1，但受到的伤害 +20%。",
+    "duration": 2,
+    "mods": { "outgoing_damage_flat": 1, "incoming_damage_mult": 0.2 }
+  },
+  "st_loop": {
+    "name": "死循环",
+    "kind": "debuff",
+    "desc": "困在死循环里，每回合流失 1 点心气，持续 4 回合。",
+    "duration": 4,
+    "mods": { "dot": 1 }
+  }
+}

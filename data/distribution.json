@@ -1,0 +1,6 @@
+{
+  "version": "0.6-playtest",
+  "webhook_url": "",
+  "feedback_form_url": "",
+  "note": "webhook_url 留空时，反馈只保存在本地 user://feedback/；填成你的服务器或飞书/钉钉机器人地址后，保存反馈会自动 POST 一份 JSON。feedback_form_url 可填在线问卷链接，反馈面板会显示「打开在线问卷」。"
+}

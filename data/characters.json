@@ -1,0 +1,62 @@
+[
+  {
+    "id": "polite_assassin",
+    "name": "温和的杀手",
+    "title": "礼貌的刀",
+    "tagline": "我完全同意你的观点——只不过它恰好是错的。",
+    "affinity": "VALUE",
+    "passive": "polite_trap",
+    "passive_name": "礼貌陷阱",
+    "passive_desc": "使用构建卡时，若对方在响应窗口用诡辩卡硬碰硬，诡辩效果减半。",
+    "accent": "#c4b47f",
+    "ai": {
+      "counter_rate": 0.6,
+      "weights": { "CONSTRUCTION": 1.5, "DECONSTRUCTION": 1.0, "PIVOT": 0.8 }
+    }
+  },
+  {
+    "id": "fact_checker",
+    "name": "事实狂魔",
+    "title": "数据暴君",
+    "tagline": "在没有证据之前，你的所有推论都只是假设。",
+    "affinity": "FACT",
+    "passive": "evidence_overwhelm",
+    "passive_name": "证据压制",
+    "passive_desc": "使用事实卡时，对方“哑口无言”的惩罚倍率 ×1.5。",
+    "accent": "#7fa7c4",
+    "ai": {
+      "counter_rate": 0.8,
+      "weights": { "CONSTRUCTION": 1.0, "DECONSTRUCTION": 1.5, "PIVOT": 0.5 }
+    }
+  },
+  {
+    "id": "empath",
+    "name": "共情怪",
+    "title": "情绪操盘手",
+    "tagline": "你怎么能如此冷酷地对待一个真实的感受？",
+    "affinity": "EMOTION",
+    "passive": "moral_high_ground",
+    "passive_name": "道德高地",
+    "passive_desc": "对方用拆解卡但没能完全抵消时，对方额外损失 1 点心气。",
+    "accent": "#c48f8f",
+    "ai": {
+      "counter_rate": 0.55,
+      "weights": { "CONSTRUCTION": 1.3, "DECONSTRUCTION": 0.8, "PIVOT": 1.2 }
+    }
+  },
+  {
+    "id": "contrarian",
+    "name": "杠精之王",
+    "title": "逻辑破坏者",
+    "tagline": "虽然你说的没错，但我依然不认同你的结论。",
+    "affinity": "LOGIC",
+    "passive": "reverse_pleasure",
+    "passive_name": "反向快感",
+    "passive_desc": "每当对方成功反击自己时，自身反而回复 1 点心气。",
+    "accent": "#9fb8a0",
+    "ai": {
+      "counter_rate": 0.72,
+      "weights": { "CONSTRUCTION": 0.7, "DECONSTRUCTION": 1.2, "PIVOT": 1.8 }
+    }
+  }
+]
