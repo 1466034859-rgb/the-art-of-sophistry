@@ -8,6 +8,7 @@
 """
 import argparse
 import base64
+import hashlib
 import json
 import os
 import sys
@@ -34,17 +35,28 @@ def request_json(url, token=None, method="GET", payload=None, timeout=40):
     if payload is not None:
         data = json.dumps(payload).encode("utf-8")
         headers["Content-Type"] = "application/json"
-    req = urllib.request.Request(url, data=data, headers=headers, method=method)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            body = response.read().decode("utf-8")
-            return response.status, json.loads(body) if body else {}
-    except urllib.error.HTTPError as error:
-        body = error.read().decode("utf-8", errors="replace")
+    last_error = None
+    for attempt in range(5):
+        req = urllib.request.Request(url, data=data, headers=headers, method=method)
         try:
-            return error.code, json.loads(body)
-        except json.JSONDecodeError:
-            return error.code, {"raw": body}
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                body = response.read().decode("utf-8")
+                return response.status, json.loads(body) if body else {}
+        except urllib.error.HTTPError as error:
+            body = error.read().decode("utf-8", errors="replace")
+            try:
+                return error.code, json.loads(body)
+            except json.JSONDecodeError:
+                return error.code, {"raw": body}
+        except Exception as error:  # 网络抖动 / SSL 中断，重试
+            last_error = error
+            time.sleep(2 + attempt * 2)
+    raise last_error
+
+
+def git_blob_sha(content: bytes) -> str:
+    header = b"blob " + str(len(content)).encode("ascii") + b"\x00"
+    return hashlib.sha1(header + content).hexdigest()
 
 
 def get_token(device_code):
@@ -75,7 +87,7 @@ def get_token(device_code):
 def collect_files():
     files = []
     for current, dirs, names in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS and not d.startswith(".git")]
+        dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS and d != ".git"]
         for name in names:
             full = os.path.join(current, name)
             rel = os.path.relpath(full, ROOT).replace(os.sep, "/")
@@ -158,10 +170,28 @@ def main():
 
     files = collect_files()
     print("uploading %d files..." % len(files))
+    # 复用远端已有 blob：只上传内容变化的文件，减少请求、避免网络抖动导致整体失败
+    existing: dict[str, str] = {}
+    status, remote_tree = request_json(
+        "%s/repos/%s/%s/git/trees/main?recursive=1" % (API, owner, args.repo),
+        token,
+    )
+    if status == 200:
+        for item in remote_tree.get("tree", []):
+            if item.get("type") == "blob":
+                existing[item["path"]] = item["sha"]
     entries = []
+    uploaded = 0
     for index, (rel, full) in enumerate(files, 1):
         with open(full, "rb") as handle:
-            content = base64.b64encode(handle.read()).decode("ascii")
+            raw = handle.read()
+        sha = git_blob_sha(raw)
+        if existing.get(rel) == sha:
+            entries.append({"path": rel, "mode": "100644", "type": "blob", "sha": sha})
+            if index % 20 == 0 or index == len(files):
+                print("  %d/%d (reused)" % (index, len(files)))
+            continue
+        content = base64.b64encode(raw).decode("ascii")
         blob = None
         for attempt in range(5):
             status, blob = request_json(
@@ -180,8 +210,10 @@ def main():
             print("blob failed:", rel, status, blob)
             sys.exit(1)
         entries.append({"path": rel, "mode": "100644", "type": "blob", "sha": blob["sha"]})
+        uploaded += 1
         if index % 20 == 0 or index == len(files):
             print("  %d/%d" % (index, len(files)))
+    print("new blobs:", uploaded, "reused:", len(files) - uploaded)
 
     status, tree = request_json(
         "%s/repos/%s/%s/git/trees" % (API, owner, args.repo),

@@ -1,5 +1,8 @@
 # 《诡辩之术》 The Art of Sophistry
 
+[![tests](https://github.com/1466034859-rgb/the-art-of-sophistry/actions/workflows/tests.yml/badge.svg)](https://github.com/1466034859-rgb/the-art-of-sophistry/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 像素风 · 回合制 · 1v1 嘴炮卡牌对战。
 Godot 4.7（GL Compatibility 渲染器），全部逻辑与 UI 均以 GDScript 实现，卡池 / 角色 / 场景 / 状态全部数据驱动。
 
@@ -7,18 +10,29 @@ Godot 4.7（GL Compatibility 渲染器），全部逻辑与 UI 均以 GDScript �
 > AI 对战、视觉润色、卡池扩充、情景系统。当前是**四场故事可玩**的成品试玩版：
 > 茶水间·加班、评论区·帮扶门槛、年夜饭·快乐/成绩、咖啡馆·科学/情感。
 
+**GitHub 仓库：** https://github.com/1466034859-rgb/the-art-of-sophistry
+
+<table>
+<tr>
+<td><img src="screenshots/12_find_flaw.png" alt="找漏洞" width="380"></td>
+<td><img src="screenshots/19_debrief.png" alt="复盘" width="380"></td>
+</tr>
+</table>
+
 ---
 
 ## 0. 快速开玩
 
 | 方式 | 操作 | 说明 |
 | --- | --- | --- |
-| 双击启动（推荐） | 双击根目录 `run_game.bat` | 需要本机装有 Godot 4.7；脚本会找到常见安装路径，找不到会提示 |
+| 下载试玩包（推荐） | 到 [Releases](https://github.com/1466034859-rgb/the-art-of-sophistry/releases) 下载 `Sophistry-playtest.zip`，解压后双击 `run_game.bat` | 需要本机装有 Godot 4.7；脚本会找到常见安装路径，找不到会提示 |
 | 编辑器 | 用 Godot 4.7 打开 `project.godot`，按 F5 | 最稳，适合改内容 |
 | 导出 exe | `powershell -File tools\build_windows.ps1` | 需要先在 Godot 里安装 4.7 export templates（本机证书链异常，无法由脚本自动下载）；产物在 `build\Sophistry.exe` |
 
 进游戏后：主菜单 →「故事模式 · 四场辩论」→ 选一场 → 空格/回车继续、数字键 1-9 选择。
-顶栏可开关音效、打开「对白记录」回看台词。
+顶栏可开关音效、打开「对白记录」回看台词；按 `Esc` 暂停，按 `F3` 看调试信息。
+遇到问题点「反馈」，会把日志/截图打包到本地文件夹，发到
+[Issues](https://github.com/1466034859-rgb/the-art-of-sophistry/issues) 即可。
 
 ---
 
@@ -486,3 +500,9 @@ Final = (Base × Fit × CharBonus + Flat) × OutMult × ScenarioMult
 - **自动收集**：`data/distribution.json` 里填 `webhook_url`，保存反馈时自动 POST JSON；填 `feedback_form_url` 会多一个在线问卷按钮。
 - **调试**：游戏内按 `F3` 看 FPS / 场景 / 日志路径 / 最近事件。引擎报错由 `FileLogger` 自动写入会话日志。
 - **空选项兜底**：即使再遇到异常选项为空，界面会记录日志并给「跳过异常步骤」按钮，保证卡不死。
+
+---
+
+## 12. License
+
+[MIT](LICENSE) © 2026 1466034859-rgb。
