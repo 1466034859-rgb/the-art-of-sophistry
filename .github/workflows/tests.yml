@@ -1,0 +1,42 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  headless-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Godot 4.7
+        run: |
+          curl -fL -o godot.zip "https://github.com/godotengine/godot-builds/releases/download/4.7-stable/Godot_v4.7-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          chmod +x Godot_v4.7-stable_linux.x86_64
+
+      - name: Import project (build class cache)
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --path . --editor --quit
+
+      - name: Card battle tests
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --path . --script res://tests/test_battle.gd
+
+      - name: Story engine tests
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --path . --script res://tests/test_story.gd
+
+      - name: Story UI full-play
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --fixed-fps 60 --path . --script res://tests/test_story_ui.gd
+
+      - name: Story UI wrong-path
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --fixed-fps 60 --path . --script res://tests/test_story_wrong_ui.gd
+
+      - name: Feedback and diagnostics
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --path . --script res://tests/test_feedback.gd
+
+      - name: Procedural sfx
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --path . --script res://tests/test_sfx.gd
+
+      - name: Battle UI smoke
+        run: ./Godot_v4.7-stable_linux.x86_64 --headless --fixed-fps 60 --path . --script res://tests/test_ui.gd
